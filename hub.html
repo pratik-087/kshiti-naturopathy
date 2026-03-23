@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Journey Hub | Kshiti Naturopathy & Yoga</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #593031;
+            --secondary: #f9855c;
+            --accent: #ffd5d6;
+            --bg-main: #fffbf5;
+            --bg-soft: #fff1ec;
+            --text-dark: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        .hub-container {
+            max-width: 900px;
+            margin: 120px auto 60px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .quiz-option-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .quiz-set-card {
+            background: #fff;
+            border: 2px solid #f0f0f0;
+            border-radius: 25px;
+            padding: 40px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-set-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(249, 133, 92, 0.1);
+        }
+
+        .quiz-set-card i {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .quiz-set-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .quiz-set-card p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .start-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 133, 92, 0.3);
+        }
+
+        .start-badge:hover {
+            background: var(--primary);
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 8px 25px rgba(89, 48, 49, 0.35);
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .icon-wrap {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            margin: 0 auto 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .quiz-set-card:hover .icon-wrap {
+            transform: scale(1.12) rotate(-5deg);
+        }
+
+        .icon-physical {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .icon-nutrition {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.2);
+        }
+
+        .icon-mental {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2);
+        }
+
+        #player-view,
+        #results-view {
+            display: none;
+        }
+
+        .progress-box {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .ans-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .ans-btn {
+            background: var(--bg-soft);
+            border: 1.5px solid var(--accent);
+            padding: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .ans-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .report-box {
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .box-dos {
+            background: #f0fff4;
+            border: 1px solid #c6f6d5;
+        }
+
+        .box-donts {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+        }
+
+        .report-box h4 {
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .report-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .report-box li {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+            line-height: 1.4;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .score-wrap {
+            background: linear-gradient(135deg, #593031, #8b4546);
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .score-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .score-circle span:first-child {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .score-circle span:last-child {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .ans-summary {
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .ans-summary table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .ans-summary th {
+            background: var(--bg-soft);
+            padding: 8px 12px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .ans-summary td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .ans-summary tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .ans-grid,
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hub-container {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="nav-brand">
+                <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+                    <img src="logo.png" alt="Logo" style="height: 60px; width: 60px; border-radius:50%;">
+                </a>
+            </li>
+            <li class="nav-links">
+                <a href="index.html">Home</a>
+                <!-- <a href="index.html#appointment">Appointment</a> -->
+                <!-- <a href="hub.html">Wellness Quiz</a> -->
+            </li>
+            <li class="nav-controls" style="display: flex; align-items: center; gap: 20px;">
+                <div class="notification-bell" onclick="handleDoctorIconClick()" style="cursor: pointer;">
+                    <i class="fa-solid fa-user-doctor" style="font-size: 1.5rem; color: var(--primary);"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="hub-container">
+        <!-- SELECTION VIEW -->
+        <div id="selection-view" class="card">
+            <h2 class="playfair" style="font-size: 2.5rem; color: var(--primary);">Choose Your Quiz</h2>
+            <p style="color: #666;">Get a personalized naturopathic health assessment in 3 minutes.</p>
+            <div class="quiz-option-grid">
+                <div class="quiz-set-card">
+                    <div class="icon-wrap icon-physical">🏃</div>
+                    <h3>Physical Vitality</h3>
+                    <p>Sleep, energy levels, and daily movement.</p>
+                    <span class="start-badge" onclick="beginQuiz(0)">Start Set &rarr;</span>
+                </div>
+                <div class="quiz-set-card">
+                    <div class="icon-wrap icon-nutrition">🥗</div>
+                    <h3>Nutrition &amp; Gut</h3>
+                    <p>Dietary habits and digestive health.</p>
+                    <span class="start-badge" onclick="beginQuiz(10)">Start Set &rarr;</span>
+                </div>
+                <div class="quiz-set-card">
+                    <div class="icon-wrap icon-mental">🧠</div>
+                    <h3>Mental Harmony</h3>
+                    <p>Stress management and mental clarity.</p>
+                    <span class="start-badge" onclick="beginQuiz(20)">Start Set &rarr;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAYER VIEW -->
+        <div id="player-view" class="card">
+            <span id="cat-label"
+                style="text-transform: uppercase; font-weight: 800; color: var(--secondary); letter-spacing: 1px;">PHYSICAL</span>
+            <div class="progress-box">
+                <div id="bar" class="progress-bar"></div>
+            </div>
+            <p id="counter" style="color: #bbb; font-size: 0.9rem;">Question 1 of 10</p>
+            <h2 id="q-text" class="playfair" style="margin: 30px 0; font-size: 1.8rem; line-height: 1.3;">Loading...
+            </h2>
+            <div id="options" class="ans-grid"></div>
+        </div>
+
+        <!-- RESULTS VIEW -->
+        <div id="results-view" class="card">
+            <div style="font-size: 4rem; margin-bottom: 10px;">✨</div>
+            <h2 class="playfair" style="font-size: 2.2rem; margin-bottom: 10px;">Your Wellness Roadmap</h2>
+            <p style="color: #777;">Based on your answers, here is what we recommend.</p>
+
+            <div class="report-grid">
+                <div class="report-box box-dos">
+                    <h4 style="color: #2f855a;"><i class="fa-solid fa-check-circle"></i> RECOMMENDATIONS</h4>
+                    <ul id="list-dos"></ul>
+                </div>
+                <div class="report-box box-donts">
+                    <h4 style="color: #c53030;"><i class="fa-solid fa-xmark-circle"></i> THINGS TO AVOID</h4>
+                    <ul id="list-donts"></ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <button onclick="printReport()"
+                    style="background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(89, 48, 49, 0.2);">
+                    <i class="fa-solid fa-download"></i> Save as PDF Report
+                </button>
+                <div style="margin-top: 20px;">
+                    <button onclick="location.reload()"
+                        style="background: none; border: none; color: #f9855c; text-decoration: none; font-weight: 600; font-size: 1.0rem; cursor: pointer;">Take
+                        another set of quiz!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOCTOR DASHBOARD VIEW -->
+        <div id="doctor-dashboard" class="card" style="display:none; max-width: 1000px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 class="playfair" style="font-size: 2.5rem; color: var(--primary); margin: 0;">Doctor Dashboard</h2>
+                <button onclick="logoutDoctor()" class="btn-secondary" style="padding: 10px 20px;">Logout</button>
+            </div>
+
+            <div id="stat-grid"
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
+                <div style="background: var(--bg-soft); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Total Appointments</h4>
+                    <p id="total-count"
+                        style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 5px 0;">0</p>
+                </div>
+                <div style="background: var(--bg-soft); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">New Notifications</h4>
+                    <p id="notif-count"
+                        style="font-size: 2rem; font-weight: 700; color: var(--secondary); margin: 5px 0;">0</p>
+                </div>
+                <div style="background: var(--bg-soft); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Today's Date</h4>
+                    <p id="today-date"
+                        style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 15px 0;"></p>
+                </div>
+            </div>
+
+            <div class="ans-summary" style="overflow-x: auto;">
+                <table id="appointment-table">
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Name</th>
+                            <th>Age/Gender</th>
+                            <th>Contact</th>
+                            <th>Goals</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointment-body">
+                        <!-- Data will be injected here -->
+                    </tbody>
+                </table>
+                <div id="no-appointments" style="padding: 40px; color: #999; display: none;">
+                    No appointments found in the database.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Doctor Dashboard Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('openDash') === 'true') {
+                if (sessionStorage.getItem('docAuth') === 'true') {
+                    showDoctorDashboard();
+                } else {
+                    // Redirect back to login if param is present but no auth
+                    location.href = 'index.html';
+                }
+            }
+        });
+
+        function showDoctorDashboard() {
+            document.getElementById('selection-view').style.display = 'none';
+            document.getElementById('player-view').style.display = 'none';
+            document.getElementById('results-view').style.display = 'none';
+            document.getElementById('doctor-dashboard').style.display = 'block';
+
+            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            const tbody = document.getElementById('appointment-body');
+            const totalCount = document.getElementById('total-count');
+            const notifCountText = document.getElementById('notif-count');
+            const todayDate = document.getElementById('today-date');
+
+            todayDate.innerText = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            totalCount.innerText = appointments.length;
+            notifCountText.innerText = localStorage.getItem('notifCount') || '0';
+
+            // Clear notifications when viewing dashboard
+            localStorage.setItem('notifCount', '0');
+
+            tbody.innerHTML = '';
+            if (appointments.length === 0) {
+                document.getElementById('no-appointments').style.display = 'block';
+                document.getElementById('appointment-table').style.display = 'none';
+            } else {
+                document.getElementById('no-appointments').style.display = 'none';
+                document.getElementById('appointment-table').style.display = 'table';
+
+                // Show latest appointments first
+                [...appointments].reverse().forEach((app, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${app.date}</td>
+                        <td style="font-weight:600;">${app.name}</td>
+                        <td>${app.age} / ${app.gender}</td>
+                        <td>${app.email}<br>${app.phone}</td>
+                        <td style="max-width:200px; font-size:0.8rem;">${app.goals}</td>
+                        <td>
+                            <button onclick="deleteAppointment(${appointments.length - 1 - index})" style="background:none; border:none; color:#d9534f; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        function deleteAppointment(index) {
+            if (confirm('Are you sure you want to delete this appointment?')) {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                appointments.splice(index, 1);
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                showDoctorDashboard();
+            }
+        }
+
+        function logoutDoctor() {
+            sessionStorage.removeItem('docAuth');
+            location.href = 'index.html';
+        }
+        const QUESTIONS = [
+            // Physical
+            { q: "How many hours of sleep did you get last night?", o: ["< 5 hours", "5-7 hours", "7-9 hours", "9+ hours"], c: "PHYSICAL" },
+            { q: "How often do you engage in intense movement?", o: ["Never", "1-2 times/week", "3-5 times/week", "Daily"], c: "PHYSICAL" },
+            { q: "How much water do you consume daily?", o: ["< 1L", "1-2L", "2-3L", "3L+"], c: "PHYSICAL" },
+            { q: "How is your posture during work/sitting?", o: ["Very Slumped", "Slumped", "Good", "Excellent"], c: "PHYSICAL" },
+            { q: "Do you experience persistent joint stiffness?", o: ["Always", "Frequently", "Occasionally", "Never"], c: "PHYSICAL" },
+            { q: "How often do you walk for 30+ minutes?", o: ["Rarely", "2-3 times/week", "5-6 times/week", "Daily"], c: "PHYSICAL" },
+            { q: "Do you take stairs instead of elevator?", o: ["Never", "Rarely", "Often", "Always"], c: "PHYSICAL" },
+            { q: "Rate your daily energy level:", o: ["Drained", "Tired", "Steady", "Vibrant"], c: "PHYSICAL" },
+            { q: "Do you have morning aches or pains?", o: ["Daily", "Often", "Rarely", "Never"], c: "PHYSICAL" },
+            { q: "How often do you eat processed snacks?", o: ["Multiple/day", "Once/day", "Rarely", "Never"], c: "PHYSICAL" },
+            // Nutrition
+            { q: "How many servings of veggies do you eat?", o: ["0-1", "2-3", "4-5", "6+"], c: "NUTRITION" },
+            { q: "Do you experience bloating after meals?", o: ["Always", "Often", "Sometimes", "Never"], c: "NUTRITION" },
+            { q: "How often do you eat fermented foods (Curd)?", o: ["Never", "Monthly", "Weekly", "Daily"], c: "NUTRITION" },
+            { q: "How much caffeine do you consume?", o: ["4+ cups", "2-3 cups", "1 cup", "None"], c: "NUTRITION" },
+            { q: "Do you eat a heavy meal late at night?", o: ["Daily", "Often", "Rarely", "Never"], c: "NUTRITION" },
+            { q: "How often do you cook at home?", o: ["Rarely", "1-2 times/week", "4-5 times/week", "Always"], c: "NUTRITION" },
+            { q: "Do you consume sugary drinks (Soda/Juice)?", o: ["Daily", "Weekly", "Monthly", "Never"], c: "NUTRITION" },
+            { q: "Rate your digestion speed:", o: ["Very Slow", "Sluggish", "Normal", "Healthy"], c: "NUTRITION" },
+            { q: "Do you feel energized after eating?", o: ["No, sleepy", "Sluggish", "Neutral", "Yes"], c: "NUTRITION" },
+            { q: "Do you experience acidity or heartburn?", o: ["Daily", "Often", "Rarely", "Never"], c: "NUTRITION" },
+            // Mental
+            { q: "Rate your overall stress level:", o: ["Very High", "Manageable", "Low", "Calm"], c: "MENTAL" },
+            { q: "How often do you practice mindfulness?", o: ["Never", "Monthly", "Weekly", "Daily"], c: "MENTAL" },
+            { q: "Do you spend time in nature daily?", o: ["No", "Rarely", "Often", "Yes"], c: "MENTAL" },
+            { q: "Rate your ability to focus:", o: ["Poor", "Fair", "Good", "Excellent"], c: "MENTAL" },
+            { q: "How often do you feel overwhelmed?", o: ["Constantly", "Weekly", "Rarely", "Never"], c: "MENTAL" },
+            { q: "Do you keep a gratitude journal?", o: ["No", "I think it", "Sometimes", "Daily"], c: "MENTAL" },
+            { q: "Rate your social connection quality:", o: ["Isolated", "Fair", "Good", "Strong"], c: "MENTAL" },
+            { q: "How much time for your hobbies?", o: ["None", "Very little", "Weekly", "Daily"], c: "MENTAL" },
+            { q: "Are you optimistic about your health journey?", o: ["No", "Neutral", "Hopeful", "Very Positive"], c: "MENTAL" },
+            { q: "Do you wake up feeling refreshed?", o: ["Never", "Rarely", "Usually", "Always"], c: "MENTAL" }
+        ];
+
+        let index = 0, limit = 0, answers = [], category = "";
+
+        function beginQuiz(start) {
+            document.getElementById('selection-view').style.display = 'none';
+            document.getElementById('player-view').style.display = 'block';
+            document.getElementById('results-view').style.display = 'none';
+            index = start;
+            limit = start + 10;
+            answers = [];
+            category = QUESTIONS[start].c;
+            document.getElementById('cat-label').innerText = category;
+            showNewQuestion();
+        }
+
+        function showNewQuestion() {
+            if (index >= limit) { showFinalResults(); return; }
+            const q = QUESTIONS[index];
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('counter').innerText = 'Question ' + ((index % 10) + 1) + ' of 10';
+            document.getElementById('bar').style.width = (((index % 10) + 1) / 10 * 100) + '%';
+            const box = document.getElementById('options');
+            box.innerHTML = '';
+            q.o.forEach(opt => {
+                const b = document.createElement('div');
+                b.className = 'ans-btn';
+                b.innerText = opt;
+                b.onclick = () => {
+                    answers.push({ q: q.q, a: opt });
+                    index++;
+                    showNewQuestion();
+                };
+                box.appendChild(b);
+            });
+        }
+
+        function getA(k) {
+            const f = answers.find(x => x.q.toLowerCase().indexOf(k.toLowerCase()) !== -1);
+            return f ? f.a : null;
+        }
+
+        function calcScore() {
+            let score = 0;
+            answers.forEach(item => {
+                const q = QUESTIONS.find(x => x.q === item.q);
+                if (q) { const i = q.o.indexOf(item.a); if (i !== -1) score += i; }
+            });
+            return Math.round((score / (answers.length * 3)) * 100);
+        }
+
+        function showFinalResults() {
+            document.getElementById('player-view').style.display = 'none';
+            document.getElementById('results-view').style.display = 'block';
+
+            const dList = document.getElementById('list-dos');
+            const nList = document.getElementById('list-donts');
+            dList.innerHTML = ''; nList.innerHTML = '';
+
+            const do_ = (i, t) => { dList.innerHTML += '<li><span>' + i + '</span><span>' + t + '</span></li>'; };
+            const dont = (i, t) => { nList.innerHTML += '<li><span>' + i + '</span><span>' + t + '</span></li>'; };
+
+            const pct = calcScore();
+            const label = pct >= 75 ? 'Excellent' : pct >= 50 ? 'Good' : pct >= 30 ? 'Fair' : 'Needs Work';
+
+            // Inject score badge above report grid
+            const existingScore = document.getElementById('score-wrap');
+            if (existingScore) existingScore.remove();
+            const scoreWrap = document.createElement('div');
+            scoreWrap.id = 'score-wrap';
+            scoreWrap.className = 'score-wrap';
+            scoreWrap.innerHTML = '<div class="score-circle"><span>' + pct + '%</span><span>Score</span></div>' +
+                '<div style="text-align:left"><div style="font-size:1.4rem;font-weight:700">' + label + ' Wellness</div>' +
+                '<div style="opacity:0.85;font-size:0.9rem;margin-top:4px">Based on your ' + answers.length + ' answers in the <strong>' + category + '</strong> quiz</div></div>';
+            const reportGrid = document.querySelector('.report-grid');
+            reportGrid.parentNode.insertBefore(scoreWrap, reportGrid);
+
+            if (category === 'PHYSICAL') {
+                const sleep = getA('sleep');
+                if (sleep === '< 5 hours') {
+                    do_('🌙', 'Target a consistent 10 PM bedtime to rebuild your sleep debt gradually.');
+                    dont('📵', 'Avoid all screens at least 1 hour before bed — blue light blocks melatonin.');
+                } else if (sleep === '5-7 hours') {
+                    do_('😴', 'Go to bed 30 minutes earlier each week until you reach the ideal 7-9 hours.');
+                    dont('☕', 'Avoid caffeine after 2 PM — it stays active for 6+ hours and disrupts sleep.');
+                } else if (sleep === '9+ hours') {
+                    do_('⏰', 'Set a fixed wake-up time daily — oversleeping can cause grogginess and low energy.');
+                    dont('🛌', 'Avoid daytime naps if you are already sleeping 9+ hours at night.');
+                } else {
+                    do_('✅', 'Excellent sleep routine! Maintain your 7-9 hour consistency — it is your #1 health asset.');
+                }
+
+                const movement = getA('movement');
+                if (movement === 'Never') {
+                    do_('🚶', 'Start with just 15-minute walks daily — consistency matters more than intensity.');
+                    dont('🪑', 'Never sit for more than 45 minutes without a short movement break.');
+                } else if (movement === '1-2 times/week') {
+                    do_('🏃', 'Add one more session per week — try a 20-minute yoga flow on alternate days.');
+                    dont('📺', 'Do not spend rest days in complete inactivity — gentle stretching still counts.');
+                } else {
+                    do_('💪', 'Great movement habit! Add yoga or deep stretching on your recovery days.');
+                }
+
+                const water = getA('water');
+                if (water === '< 1L') {
+                    do_('💧', 'Start each morning with 2 glasses of warm water — make it a non-negotiable ritual.');
+                    dont('🥤', 'Stop replacing water with packaged juices, sodas, or excess tea for hydration.');
+                } else if (water === '1-2L') {
+                    do_('🌊', 'Keep a 1L water bottle visible at your desk and refill it twice through the day.');
+                    dont('🍵', 'Limit diuretics like excess coffee or tea that reduce net hydration.');
+                } else {
+                    do_('💧', 'Great hydration! Water is the carrier of all nutrients — keep it consistent.');
+                }
+
+                const posture = getA('posture');
+                if (posture === 'Very Slumped' || posture === 'Slumped') {
+                    do_('🧘', 'Practice 5 mins of Cat-Cow stretch and Child\'s Pose daily for spine health.');
+                    dont('💺', 'Avoid prolonged slouching — set hourly phone reminders to correct your posture.');
+                } else {
+                    do_('🏋️', 'Keep strengthening your core — it is the foundation of lasting good posture.');
+                }
+
+                const joint = getA('joint');
+                if (joint === 'Always' || joint === 'Frequently') {
+                    do_('🌿', 'Try warm sesame oil self-massage (Abhyanga) on stiff joints each morning.');
+                    dont('🥶', 'Avoid cold baths or cold foods first thing in the morning — they worsen stiffness.');
+                } else if (joint === 'Occasionally') {
+                    do_('🤸', 'Include gentle joint-rotation warm-ups before any physical activity.');
+                } else {
+                    do_('✅', 'Healthy joints! Keep them lubricated with good hydration and omega-3 rich foods.');
+                }
+
+                const walk = getA('walk');
+                if (walk === 'Rarely') {
+                    do_('🌳', 'Schedule a 30-min nature walk 3x this week — nature walks naturally reduce cortisol.');
+                    dont('🚗', 'Do not take transport for distances under 1 km — walk instead.');
+                } else {
+                    do_('🌳', 'Great walking habit! Aim for 10,000 steps daily for optimal cardiovascular health.');
+                }
+
+                const stairs = getA('stairs');
+                if (stairs === 'Never' || stairs === 'Rarely') {
+                    do_('🏢', 'Commit to taking stairs for up to 3 floors — it is a free daily cardio session.');
+                    dont('🛗', 'Avoid the elevator for short climbs — every step counts toward your daily movement goal.');
+                }
+
+                const energy = getA('energy level');
+                if (energy === 'Drained' || energy === 'Tired') {
+                    do_('☀️', 'Start mornings with 5 Sun Salutations (Surya Namaskar) to activate natual energy.');
+                    dont('🍬', 'Avoid sugar or caffeine as energy fixes — they cause sharp energy crashes an hour later.');
+                } else {
+                    do_('⚡', 'Good energy levels! Protect them with consistent sleep, water, and whole foods.');
+                }
+
+                const aches = getA('morning');
+                if (aches === 'Daily' || aches === 'Often') {
+                    do_('🛁', 'Do a warm water rinse and 5-minute gentle stretch before getting out of bed daily.');
+                    dont('📱', 'Do not check your phone first thing — give your body 10 minutes to wake up naturally.');
+                } else if (aches === 'Never') {
+                    do_('✅', 'No morning aches — your muscle recovery and sleep quality are both excellent!');
+                }
+
+                const snacks = getA('processed');
+                if (snacks === 'Multiple/day') {
+                    do_('🥜', 'Replace processed snacks with nuts, seasonal fruit, or roasted chickpeas.');
+                    dont('🛒', 'Stop buying chips and packaged snacks — if they are not at home, you will not eat them.');
+                } else if (snacks === 'Once/day') {
+                    do_('🍎', 'Swap your daily packaged snack with fresh fruit, a handful of seeds, or roasted nuts.');
+                } else {
+                    do_('✅', 'Excellent snack choices! Whole foods fuel sustained energy throughout your day.');
+                }
+
+            } else if (category === 'NUTRITION') {
+                const veggies = getA('veggies');
+                if (veggies === '0-1') {
+                    do_('🥗', 'Start with one salad bowl at lunch — cucumber, tomato, carrot with a pinch of salt.');
+                    dont('🍟', 'Stop replacing vegetable portions with fried sides, white rice, or bread.');
+                } else if (veggies === '2-3') {
+                    do_('🥦', 'Add one more veggie serving daily — include dark leafy greens like spinach or methi.');
+                } else {
+                    do_('🌈', 'Excellent veggie intake! Rotate vegetables weekly for diverse micronutrients.');
+                }
+
+                const bloating = getA('bloating');
+                if (bloating === 'Always' || bloating === 'Often') {
+                    do_('🍵', 'Drink warm ginger-cumin water 15 mins after each meal to stimulate digestion.');
+                    do_('🚶', 'Take a gentle 10-minute walk after meals — never sit or lie down immediately.');
+                    dont('🧊', 'Never drink cold water or cold beverages with meals — it quenches digestive fire.');
+                    dont('🫁', 'Do not eat in a hurry — chew each bite at least 20 times before swallowing.');
+                } else if (bloating === 'Sometimes') {
+                    do_('🌿', 'Try ajwain (carom seeds) in warm water whenever occasional bloating occurs.');
+                    dont('🫘', 'Monitor foods that trigger bloating — commonly legumes, raw salads, and cold drinks.');
+                } else {
+                    do_('✅', 'Great gut health! Probiotics and fiber-rich foods are your best friends — keep it up.');
+                }
+
+                const fermented = getA('fermented');
+                if (fermented === 'Never' || fermented === 'Monthly') {
+                    do_('🥛', 'Include a small bowl of homemade curd or yogurt with your lunch every single day.');
+                    dont('💊', 'Do not rely on probiotic supplements — natural fermented foods are far superior.');
+                } else {
+                    do_('🫙', 'Great probiotic habit! Try adding idli, dosa ferments, or kanji for more gut diversity.');
+                }
+
+                const caffeine = getA('caffeine');
+                if (caffeine === '4+ cups') {
+                    do_('🌿', 'Replace 2 of your daily coffees with tulsi tea, chamomile, or warm lemon water.');
+                    dont('☕', 'Avoid caffeine after 2 PM — it stays in your system for 6+ hours and disrupts sleep.');
+                } else if (caffeine === '2-3 cups') {
+                    do_('💧', 'For every coffee, drink an extra glass of water — caffeine is significantly dehydrating.');
+                    dont('☕', 'Avoid caffeine on an empty stomach — it spikes cortisol and harms your gut lining.');
+                } else {
+                    do_('✅', 'Good caffeine discipline! Low caffeine intake keeps your adrenals and gut balanced.');
+                }
+
+                const lateNight = getA('late at night');
+                if (lateNight === 'Daily' || lateNight === 'Often') {
+                    do_('🌙', 'Make lunch your heaviest meal — your metabolic rate peaks between 12 and 2 PM.');
+                    dont('🍛', 'Never eat a heavy meal within 3 hours of bedtime — it causes fat storage and poor sleep.');
+                } else {
+                    do_('✅', 'Smart eating schedule! Your body appreciates the overnight fasting window you create.');
+                }
+
+                const cooking = getA('cook at home');
+                if (cooking === 'Rarely' || cooking === '1-2 times/week') {
+                    do_('👨‍🍳', 'Start with 1 simple home-cooked meal daily — even basic dal-rice is genuinely healing.');
+                    dont('📦', 'Avoid ordering processed or fast food — restaurant meals are high in hidden salt and oil.');
+                } else {
+                    do_('🏠', 'Home cooking champion! You control every ingredient — keep experimenting healthily.');
+                }
+
+                const sugary = getA('sugary');
+                if (sugary === 'Daily') {
+                    do_('🍋', 'Replace all sodas with infused water — add lemon, mint, sabja seeds, or cucumber.');
+                    dont('🥤', 'Eliminate packaged juices and sodas completely — they rapidly spike blood sugar.');
+                } else if (sugary === 'Weekly') {
+                    do_('🫖', 'Swap weekend sodas with fresh coconut water or unsalted buttermilk instead.');
+                    dont('🧃', 'Beware of "fruit juice" labels — most are just sugar water with minimal nutrition.');
+                } else {
+                    do_('✅', 'No sugary drinks is a true superpower — your liver, gut, and skin all benefit greatly.');
+                }
+
+                const digestion = getA('digestion');
+                if (digestion === 'Very Slow' || digestion === 'Sluggish') {
+                    do_('🌱', 'Eat your largest meal between 12-2 PM when your digestive fire (Agni) is strongest.');
+                    do_('🍵', 'Drink warm lemon-honey water every morning on an empty stomach to stimulate digestion.');
+                    dont('🍦', 'Avoid raw, cold foods in the evening — stick to warm, easily digestible cooked meals.');
+                } else {
+                    do_('✅', 'Good digestion! Keep it optimal with fiber, warm water, and mindful slow eating.');
+                }
+
+                const energyEat = getA('energized after eating');
+                if (energyEat === 'No, sleepy' || energyEat === 'Sluggish') {
+                    do_('🍽️', 'Reduce your meal portion by 25% — post-meal drowsiness always signals overeating.');
+                    dont('🛋️', 'Do not lie down after meals — sit upright or take a gentle 10-minute slow walk.');
+                } else if (energyEat === 'Yes') {
+                    do_('✅', 'Feeling energized after eating means your meal timing and composition are ideal!');
+                }
+
+                const acidity = getA('acidity');
+                if (acidity === 'Daily' || acidity === 'Often') {
+                    do_('🌿', 'Take 1 tsp of amla (Indian gooseberry) powder in water each morning — a natural acid neutralizer.');
+                    do_('🥛', 'Have a small piece of jaggery or cold coconut water after meals to cool excess acid.');
+                    dont('🌶️', 'Avoid spicy, fried, sour, and very fermented foods until acidity is fully resolved.');
+                    dont('💊', 'Stop taking antacids daily — they mask symptoms while the root cause silently worsens.');
+                } else if (acidity === 'Never') {
+                    do_('✅', 'No acidity — your gut microbiome is likely in excellent balance. Keep protecting it.');
+                }
+
+            } else { // MENTAL
+                const stress = getA('stress level');
+                if (stress === 'Very High') {
+                    do_('🌬️', 'Practice Anulom Vilom pranayama for 10 minutes every morning without fail.');
+                    do_('🌳', 'Walk barefoot on grass for 10 minutes daily — it directly calms the nervous system.');
+                    dont('📱', 'Stop doom-scrolling or checking news and emails in your first waking hour.');
+                    dont('☕', 'Never use caffeine or alcohol as coping mechanisms for stress — they amplify anxiety.');
+                } else if (stress === 'Manageable') {
+                    do_('🧘', 'Great stress management! Add 5 minutes of Shavasana daily to deepen your relaxation.');
+                    dont('📅', 'Protect your schedule — learn to say no to tasks that steadily drain your energy.');
+                } else {
+                    do_('✅', 'Impressive stress resilience — your nervous system is well regulated and thriving.');
+                }
+
+                const mindfulness = getA('mindfulness');
+                if (mindfulness === 'Never' || mindfulness === 'Monthly') {
+                    do_('🧘', 'Start with just 5 minutes of guided meditation daily — use Insight Timer or Calm app.');
+                    dont('📺', 'Do not fill every quiet moment with noise — allow your mind intentional silence daily.');
+                } else {
+                    do_('🙏', 'Your mindfulness practice builds resilience — aim to add just 2 more minutes each week.');
+                }
+
+                const nature = getA('nature');
+                if (nature === 'No' || nature === 'Rarely') {
+                    do_('🌿', 'Schedule a 15-minute outdoor break daily — even sitting near a tree genuinely helps.');
+                    dont('🏢', 'Do not spend your entire day under artificial lighting without any nature connection.');
+                } else {
+                    do_('🌳', 'Nature immersion is healing! Try forest bathing (Shinrin Yoku) on the weekends.');
+                }
+
+                const focus = getA('focus');
+                if (focus === 'Poor' || focus === 'Fair') {
+                    do_('🎯', 'Use the Pomodoro Technique: 25 minutes focused work, followed by a 5-minute break.');
+                    do_('🫐', 'Eat brain-boosting foods daily: walnuts, blueberries, and dark chocolate in moderation.');
+                    dont('📱', 'Avoid multitasking — research confirms it reduces productivity and focus by up to 40%.');
+                } else {
+                    do_('✅', 'Strong focus! Protect it by tackling your most important task first thing each morning.');
+                }
+
+                const overwhelmed = getA('overwhelmed');
+                if (overwhelmed === 'Constantly' || overwhelmed === 'Weekly') {
+                    do_('📓', 'Brain-dump your worries in a notebook for 5 minutes every evening — it clears mental clutter.');
+                    do_('🌬️', 'Use 4-7-8 breathing when overwhelmed: inhale 4s, hold 7s, exhale 8s. Repeat 4 cycles.');
+                    dont('🔕', 'Do not bottle up emotions — share feelings with a trusted person or a therapist.');
+                } else {
+                    do_('✅', 'Rarely feeling overwhelmed means your mental load management strategies are working well.');
+                }
+
+                const gratitude = getA('gratitude');
+                if (gratitude === 'No' || gratitude === 'I think it') {
+                    do_('📖', 'Write 3 things you are grateful for each morning — it scientifically rewires your brain.');
+                    dont('📱', 'Do not reach for your phone first thing — replace that habit with your gratitude journal.');
+                } else {
+                    do_('🌟', 'Your gratitude practice is profound — science confirms it measurably boosts happiness and immunity.');
+                }
+
+                const social = getA('social');
+                if (social === 'Isolated' || social === 'Fair') {
+                    do_('📞', 'Schedule one meaningful, distraction-free conversation with a loved one each week.');
+                    dont('🌐', 'Do not substitute real human connection with social media likes and online interactions.');
+                } else {
+                    do_('💞', 'Strong social bonds are directly linked to longevity — nurture them with intention.');
+                }
+
+                const hobbies = getA('hobbies');
+                if (!hobbies || hobbies === 'None' || hobbies === 'Very little') {
+                    do_('🎨', 'Dedicate 20 minutes daily to one hobby — reading, cooking, gardening, or sketching.');
+                    dont('📺', 'Do not use passive screen entertainment as a substitute for genuine joyful hobbies.');
+                } else {
+                    do_('🎮', 'Your hobbies recharge you deeply! Protect that time like you would a work appointment.');
+                }
+
+                const optimism = getA('optimistic');
+                if (optimism === 'No' || optimism === 'Neutral') {
+                    do_('🌱', 'Set one small, achievable health goal this week — celebrate it when you hit it.');
+                    dont('🔴', 'Stop comparing your health journey to others — your progress is uniquely your own.');
+                } else {
+                    do_('🌟', 'Your positivity is healing — optimism is associated with 15% lower mortality in research.');
+                }
+
+                const refreshed = getA('refreshed');
+                if (refreshed === 'Never' || refreshed === 'Rarely') {
+                    do_('🌙', 'Create a non-negotiable sleep ritual: warm shower, no screens, same bedtime every night.');
+                    dont('⏰', 'Stop hitting snooze repeatedly — rise at your first alarm to improve sleep cycle quality.');
+                } else {
+                    do_('✅', 'Waking up refreshed means your sleep cycles are healthy — protect that bedtime routine!');
+                }
+            }
+
+            if (!dList.innerHTML) do_('✨', 'You are doing really well overall! Keep your healthy habits consistent and intentional.');
+            if (!nList.innerHTML) dont('⚠️', 'Avoid sudden drastic lifestyle changes — small, consistent improvements beat harsh overhauls.');
+        }
+
+        function printReport() {
+            const pct = calcScore();
+            const label = pct >= 75 ? 'Excellent' : pct >= 50 ? 'Good' : pct >= 30 ? 'Fair' : 'Needs Work';
+            const dosHTML = document.getElementById('list-dos').innerHTML;
+            const dontsHTML = document.getElementById('list-donts').innerHTML;
+
+            const qaRows = answers.map(item =>
+                '<tr><td style="padding:8px 12px;border-bottom:1px solid #f0f0f0;color:#555;width:60%">' + item.q + '</td>' +
+                '<td style="padding:8px 12px;border-bottom:1px solid #f0f0f0;font-weight:600;color:#593031">' + item.a + '</td></tr>'
+            ).join('');
+
+            const html = `<!DOCTYPE html><html><head><title>Wellness Report \u2013 Kshiti Naturopathy<\/title>
+<style>
+  body{font-family:sans-serif;background:#fffbf5;color:#444;margin:0;padding:0}
+  .header{background:linear-gradient(135deg,#593031,#8b4546);color:white;padding:40px 50px;text-align:center}
+  .header h1{margin:0 0 8px;font-size:2rem}
+  .header p{margin:0;opacity:.85;font-size:1rem}
+  .score-bar{background:rgba(255,255,255,.15);border-radius:50px;width:200px;height:10px;margin:15px auto 0;overflow:hidden}
+  .score-fill{height:100%;background:rgba(255,255,255,.7);border-radius:50px;width:${pct}%}
+  .score-label{color:rgba(255,255,255,.9);margin-top:8px;font-size:1.1rem;font-weight:700}
+  .body{padding:40px 50px}
+  .section-title{font-size:1.2rem;font-weight:700;color:#593031;margin:30px 0 12px;border-bottom:2px solid #f0e0e0;padding-bottom:6px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th{background:#f9f0ee;padding:10px 12px;text-align:left;color:#593031;font-weight:600}
+  td{padding:8px 12px;border-bottom:1px solid #f0f0f0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:10px}
+  .box{padding:25px;border-radius:15px}
+  .dos{background:#f0fff4;border:1px solid #c6f6d5}
+  .donts{background:#fff5f5;border:1px solid #fed7d7}
+  .box h3{margin:0 0 12px;font-size:1rem}
+  .dos h3{color:#2f855a}
+  .donts h3{color:#c53030}
+  ul{list-style:none;padding:0;margin:0}
+  li{display:flex;gap:10px;margin-bottom:10px;font-size:.9rem;line-height:1.5}
+  .footer{text-align:center;padding:25px;background:#f9f0ee;color:#888;font-size:.85rem;margin-top:30px}
+<\/style><\/head><body>
+<div class="header">
+  <h1>Kshiti Naturopathy &amp; Yoga<\/h1>
+  <p>Wellness Assessment \u2014 <strong>${category}<\/strong><\/p>
+  <div class="score-label">${pct}% \u2014 ${label}<\/div>
+  <div class="score-bar"><div class="score-fill"><\/div><\/div>
+<\/div>
+<div class="body">
+  <div class="section-title">\uD83D\uDCCB Your Answers<\/div>
+  <table><tr><th>Question<\/th><th>Your Answer<\/th><\/tr>${qaRows}<\/table>
+  <div class="section-title">\uD83D\uDCA1 Your Personalised Wellness Roadmap<\/div>
+  <div class="grid">
+    <div class="box dos"><h3>\u2705 RECOMMENDATIONS<\/h3><ul>${dosHTML}<\/ul><\/div>
+    <div class="box donts"><h3>\u274C THINGS TO AVOID<\/h3><ul>${dontsHTML}<\/ul><\/div>
+  <\/div>
+<\/div>
+<div class="footer">\uD83D\uDCCD RajaRajeshwari Nagar, Bangalore &nbsp;|&nbsp; \uD83D\uDCDE +91 89514 05503 &nbsp;|&nbsp; \u2709\uFE0F alurkarpooja1702@gmail.com<br>
+&copy; 2026 Kshiti Naturopathy &amp; Yoga. All Rights Reserved.<\/div>
+<\/body><\/html>`;
+
+            const win = window.open('', '_blank');
+            if (win) {
+                win.document.write(html);
+                win.document.close();
+                setTimeout(() => win.print(), 800);
+            } else {
+                alert('Please allow popups for this page to download your PDF report.');
+            }
+        }
+    </script>
+    <!-- Doctor Login Modal -->
+    <div id="doctorAuthModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+        <div
+            style="background:#fff; padding:40px; border-radius:15px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.2); max-width:400px; width:90%;">
+            <h3 class="playfair" style="margin-bottom:20px; font-size:2rem; color:var(--primary);"><i
+                    class="fa-solid fa-user-lock"></i> Doctor Access</h3>
+            <p style="margin-bottom:20px; color:#555;">Please securely log in to access the Appointment Database.</p>
+            <input type="text" id="docUser" placeholder="Username"
+                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:15px; font-family:'Poppins', sans-serif;">
+            <input type="password" id="docPass" placeholder="Password"
+                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:20px; font-family:'Poppins', sans-serif;">
+            <div style="display:flex; gap:10px;">
+                <button onclick="document.getElementById('doctorAuthModal').style.display='none'" class="btn-secondary"
+                    style="flex:1;">Cancel</button>
+                <button onclick="authenticateDoctor()" class="btn-primary" style="flex:1;">Login</button>
+            </div>
+            <p id="authError" style="color:#d9534f; margin-top:15px; display:none; font-weight:600;">Invalid
+                credentials.</p>
+        </div>
+    </div>
+    <script>
+        function handleDoctorIconClick() {
+            if (sessionStorage.getItem('docAuth') === 'true') {
+                const dash = document.getElementById('doctor-dashboard');
+                if (dash.style.display === 'none') {
+                    showDoctorDashboard();
+                } else {
+                    // Toggle back to selection if already on dashboard
+                    dash.style.display = 'none';
+                    document.getElementById('selection-view').style.display = 'block';
+                }
+            } else {
+                document.getElementById('doctorAuthModal').style.display = 'flex';
+            }
+        }
+
+        function authenticateDoctor() {
+            const u = document.getElementById('docUser').value;
+            const p = document.getElementById('docPass').value;
+            if (u === 'doctor' && p === 'kshiti2026') {
+                sessionStorage.setItem('docAuth', 'true');
+                document.getElementById('doctorAuthModal').style.display = 'none';
+                showDoctorDashboard();
+            } else {
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

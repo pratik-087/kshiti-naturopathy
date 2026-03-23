@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga for Stress Relief | Kshiti Naturopathy & Yoga</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article-reader {
+            max-width: 850px;
+            margin: 120px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .article-header {
+            border-bottom: 2px solid var(--bg-soft);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        .main-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .article-body {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .article-body h2 {
+            margin-top: 40px;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pose-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pose-item {
+            background: var(--bg-soft);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="nav-brand">
+                <a href="index.html" style="display:flex; align-items:center;">
+                    <img src="logo.png" alt="Kshiti Logo"
+                        style="height: 70px; width: 70px; object-fit: cover; border-radius: 50%;">
+                </a>
+            </li>
+            <li class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="articles.html">Library</a>
+            </li>
+            <li class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
+                <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="article-reader">
+        <div class="article-header">
+            <h1 class="playfair" style="font-size: 2.8rem; line-height: 1.2;">Yoga and Stress Relief</h1>
+            <!-- <p style="color: #999; margin-top: 15px;">Published by Kshiti Naturopathy & Yoga • 5 min read</p> -->
+        </div>
+
+        <!-- <img src="img/yoga-article.jpg" alt="Yoga Poses" class="main-img"> -->
+
+        <div class="article-body">
+            <p>Yoga is a natural practice that helps relax the mind and body. It combines <strong>physical postures
+                    (asanas), breathing techniques (pranayama), and meditation</strong> to reduce stress and promote
+                inner peace. Regular yoga practice calms the nervous system, improves focus, and helps people manage
+                daily pressures more effectively. Even practicing yoga for <strong>15–20 minutes a day</strong> can
+                significantly lower stress and improve overall well-being.</p>
+
+            <h2>Common Yoga Poses for Stress Relief</h2>
+            <div class="pose-list">
+                <div class="pose-item">
+                    <strong>1. Child’s Pose (Balasana)</strong><br>
+                    Relaxes the back and calms the mind.
+                </div>
+                <div class="pose-item">
+                    <strong>2. Corpse Pose (Savasana)</strong><br>
+                    Provides deep relaxation and reduces fatigue.
+                </div>
+                <div class="pose-item">
+                    <strong>3. Cat–Cow Pose</strong><br>
+                    Releases tension in the spine and improves breathing.
+                </div>
+                <div class="pose-item">
+                    <strong>4. Alternate Nostril Breathing (Nadi Shodhana)</strong><br>
+                    Balances the nervous system and balances the mind, reducing anxiety.
+                </div>
+            </div>
+
+            <h2>Advantages of Yoga for Stress Relief</h2>
+            <ul style="line-height: 1.8; margin-top: 15px; list-style-type: none; padding-left: 0;">
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Reduces stress
+                    and anxiety 😌</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Improves
+                    concentration and mental clarity 🧠</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Enhances
+                    physical flexibility and posture 🤸‍♂️</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Promotes better
+                    sleep and relaxation 🌙</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Improves
+                    overall health and emotional balance 💚</li>
+            </ul>
+
+            <!-- <p style="margin-top: 40px; font-style: italic; color: #777;">Source: Healthline Medical Review & Kshiti
+                Clinical Research Team.</p> -->
+        </div>
+
+        <div style="margin-top: 60px; text-align: center;">
+            <button onclick="location.href='hub.html'" class="btn-primary">Take the Wellness Quiz</button>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            } else {
+                navLinks.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

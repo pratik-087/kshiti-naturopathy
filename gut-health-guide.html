@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gut Health & Immunity | Kshiti Naturopathy & Yoga</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article-reader {
+            max-width: 850px;
+            margin: 120px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .article-header {
+            border-bottom: 2px solid var(--bg-soft);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        .main-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .article-body {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .article-body h2 {
+            margin-top: 40px;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .expert-advice {
+            border-left: 5px solid var(--secondary);
+            padding-left: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            background: var(--bg-soft);
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .red-flag {
+            color: #d9534f;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="nav-brand">
+                <a href="index.html" style="display:flex; align-items:center;">
+                    <img src="logo.png" alt="Kshiti Logo"
+                        style="height: 70px; width: 70px; object-fit: cover; border-radius: 50%;">
+                </a>
+            </li>
+            <li class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="articles.html">Library</a>
+            </li>
+            <li class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
+                <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="article-reader">
+        <div class="article-header">
+            <h1 class="playfair" style="font-size: 2.8rem; line-height: 1.2;">Gut Health and Immunity</h1>
+            <!-- <p style="color: #999; margin-top: 15px;">Published by Kshiti Naturopathy & Yoga • 6 min read</p> -->
+        </div>
+
+        <!-- <img src="img/gut-article.jpg" alt="Gut Health Microbes" class="main-img"> -->
+
+        <div class="article-body">
+            <p>Gut health refers to the balance of microorganisms living in the digestive system. A healthy gut helps in
+                <strong>proper digestion, nutrient absorption, and strengthening the immune system</strong>. In fact, a
+                large part of the body’s immune system is connected to the gut. Maintaining good gut health through
+                <strong>balanced diet, probiotics, hydration, and healthy lifestyle habits</strong> helps the body fight
+                infections and stay strong.
+            </p>
+
+            <h2>Ways to Improve Gut Health</h2>
+            <ul style="line-height: 1.8; list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;"><strong>Probiotic Foods</strong> – Yogurt, fermented foods, and curd
+                    support healthy gut bacteria.</li>
+                <li style="margin-bottom: 10px;"><strong>Fiber-Rich Foods</strong> – Fruits, vegetables, and whole
+                    grains improve digestion.</li>
+                <li style="margin-bottom: 10px;"><strong>Hydration</strong> – Drinking enough water helps maintain
+                    digestive balance.</li>
+                <li style="margin-bottom: 10px;"><strong>Balanced Diet</strong> – Eating nutritious foods supports gut
+                    microbes and immunity.</li>
+            </ul>
+
+            <h2>Advantages of Good Gut Health</h2>
+            <ul style="line-height: 1.8; margin-top: 15px; list-style-type: none; padding-left: 0;">
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Strengthens the
+                    immune system 🛡️</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Improves
+                    digestion and nutrient absorption 🍎</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Reduces risk of
+                    infections and illnesses 🤧</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Supports better
+                    energy levels and metabolism ⚡</li>
+                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Contributes to
+                    overall health and well-being 💚</li>
+            </ul>
+
+            <!-- <p style="margin-top: 40px; font-style: italic; color: #777;">Source: American Medical Association (AMA) &
+                Kshiti Gastroenterology Division.</p> -->
+        </div>
+
+        <div style="margin-top: 60px; text-align: center;">
+            <button onclick="location.href='hub.html'" class="btn-primary">Take the Gut Health Assessment</button>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            } else {
+                navLinks.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
