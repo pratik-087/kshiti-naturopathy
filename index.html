@@ -69,7 +69,7 @@
             <h3>Experience a harmonious blend of Yoga, Diet, Nutrition, and Diagnosis tailored to your unique wellness
                 journey.</h3>
             <div class="hero-btns">
-                <button class="btn-primary" onclick="location.href='#appointment'">Book a Consultation <i
+                <button class="btn-primary" onclick="location.href='#appointment'">Book a Consultation<i
                         class="fa-solid fa-calendar-check"></i></button>
                 <button class="btn-secondary" onclick="location.href='hub.html'">Wellness Quiz >></button>
             </div>
@@ -722,12 +722,15 @@
         // Hamburger Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            } else {
-                navLinks.classList.add('active');
-            }
+            navLinks.classList.toggle('active');
         }
+
+        // Auto-close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
     </script>
     <!-- Doctor Login Modal -->
     <div id="doctorAuthModal"
