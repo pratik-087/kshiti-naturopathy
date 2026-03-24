@@ -289,15 +289,52 @@
             border-bottom: none;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
 
             .ans-grid,
-            .report-grid {
+            .report-grid,
+            .quiz-option-grid {
                 grid-template-columns: 1fr;
             }
 
             .hub-container {
                 margin-top: 100px;
+                padding: 15px;
+            }
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .quiz-set-card {
+                padding: 30px 15px;
+            }
+
+            h2 {
+                font-size: 1.8rem !important;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger-icon {
+                display: block !important;
             }
         }
     </style>
@@ -311,14 +348,19 @@
                     <img src="logo.png" alt="Logo" style="height: 60px; width: 60px; border-radius:50%;">
                 </a>
             </li>
-            <li class="nav-links">
+            <li class="nav-links" id="nav-links">
                 <a href="index.html">Home</a>
-                <!-- <a href="index.html#appointment">Appointment</a> -->
-                <!-- <a href="hub.html">Wellness Quiz</a> -->
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#appointment">Appointment</a>
             </li>
             <li class="nav-controls" style="display: flex; align-items: center; gap: 20px;">
                 <div class="notification-bell" onclick="handleDoctorIconClick()" style="cursor: pointer;">
                     <i class="fa-solid fa-user-doctor" style="font-size: 1.5rem; color: var(--primary);"></i>
+                </div>
+                <!-- Hamburger Menu Icon -->
+                <div class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
+                    <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
                 </div>
             </li>
         </ul>
@@ -1024,6 +1066,14 @@
                 showDoctorDashboard();
             } else {
                 document.getElementById('authError').style.display = 'block';
+            }
+        }
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            } else {
+                navLinks.classList.add('active');
             }
         }
     </script>
