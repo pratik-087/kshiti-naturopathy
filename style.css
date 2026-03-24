@@ -742,13 +742,30 @@ footer {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 130px 20px 60px;
-        gap: 30px;
+        padding: 100px 20px 40px;
+        gap: 20px;
+        min-height: auto;
     }
 
+
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
     }
+
+    .hero-content h3 {
+        font-size: 0.95rem;
+        /* Shrunk slightly more */
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .hero-content p {
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+
 
     .hero-btns {
         justify-content: center;
@@ -756,9 +773,22 @@ footer {
     }
 
     .hero-img {
-        width: 80%;
+        width: 50%;
+        /* Scale down a bit more to fit */
         margin: 0 auto;
     }
+
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+
+    .hero-img img {
+        box-shadow: 15px 15px 0 var(--accent);
+    }
+
 
     /* SECTIONS */
     section {
