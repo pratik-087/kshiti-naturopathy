@@ -1,840 +1,1115 @@
-<!DOCTYPE html>
-<html lang="en">
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Raleway:wght@100..900&display=swap');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kshiti Naturopathy & Yoga</title>
+:root {
+    --primary: #593031;
+    --primary-light: #83494b;
+    --secondary: #f9855c;
+    --accent: #ffd5d6;
+    --bg-main: #fffbf5;
+    --bg-soft: #fff1ec;
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --text-dark: #2d2d2d;
+    --text-muted: #666;
+    --white: #ffffff;
+    --section-padding: 80px 5%;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --radius-lg: 40px;
+    --radius-md: 20px;
+}
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    animation: fadeIn 1s ease-out;
+}
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
 
-    <!-- Icons (Font Awesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    to {
+        opacity: 1;
+    }
+}
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-</head>
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-<body>
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress-bar"
-        style="position:fixed; top:0; left:0; height:3px; width:0%; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index:99999; transition: width 0.1s linear; border-radius: 0 2px 2px 0;">
-    </div>
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
 
-    <!-- Sticky Navigation -->
-    <nav>
-        <ul>
-            <li class="nav-brand">
-                <a href="#home" style="display:flex; align-items:center;">
-                    <img src="logo.png" alt="Kshiti Logo"
-                        style="height: 70px; width: 70px; object-fit: cover; border-radius: 50%;">
-                </a>
-            </li>
-            <li class="nav-links" id="nav-links">
-                <a href="index.html#home">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="hub.html">Wellness Quiz</a>
-                <a href="calculators.html">Vitality Toolkit</a>
-                <a href="index.html#appointment">Bookings</a>
-            </li>
-            <li class="nav-controls" style="display: flex; align-items: center; gap: 20px;">
-                <div class="notification-bell" onclick="openDoctorLogin()" style="cursor: pointer;">
-                    <i class="fa-solid fa-user-doctor" style="font-size: 1.5rem; color: var(--primary);"></i>
-                </div>
-                <!-- Hamburger Menu Icon -->
-                <div class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
-                    <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    50% {
+        transform: translateY(-10px);
+    }
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content animate-up">
-            <p>Welcome to Kshiti Naturopathy & Yoga HealthCare</p>
-            <h1>Heal Your Body. <br> Feed Your Soul.</h1>
-            <h3>Experience a harmonious blend of Yoga, Diet, Nutrition, and Diagnosis tailored to your unique wellness
-                journey.</h3>
-            <div class="hero-btns animate-up">
-                <button class="btn-primary" onclick="location.href='#appointment'">Book a Consultation <i
-                        class="fa-solid fa-calendar-check"></i></button>
-                <button class="btn-secondary" onclick="location.href='hub.html'">Wellness Quiz <i
-                        class="fa-solid fa-clipboard-check" style="margin-left: 8px;"></i></button>
-                <button class="btn-secondary" onclick="location.href='calculators.html'"
-                    style="background: rgba(255,255,255,0.1); border-color: #FFD93D; color: #FFD93D; border-radius: 50px;"><i
-                        class="fa-solid fa-bolt" style="margin-right:8px;"></i> Vitality Toolkit</button>
-            </div>
+    100% {
+        transform: translateY(0px);
+    }
+}
 
+.animate-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
 
-        </div>
-        <div class="hero-img floating">
-            <img src="hero_premium.png" alt="Premium Wellness">
-        </div>
-    </section>
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
 
-    <!-- About Us Section -->
-    <section id="about">
-        <div class="text-center mb-4 animate-up">
-            <h2 class="section-title">Our Essence</h2>
-            <p class="section-subtitle">Simple, practical health guidance based on proven methods. We're here to help
-                you build sustainable, healthy habits.</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card animate-up">
-                <i class="fa-solid fa-staff-snake" style="color: #4CAF50;"></i>
-                <h3>Our Vision</h3>
-                <p>To make healthy living straightforward and accessible, helping people feel better and live healthier,
-                    more active lives.</p>
-            </div>
-            <div class="about-card animate-up" style="animation-delay: 0.2s;">
-                <i class="fa-solid fa-hand-holding-medical" style="color: #2196F3;"></i>
-                <h3>Our Mission</h3>
-                <p>To offer practical, actionable advice on diet, movement, and mental well-being that fits into your
-                    actual daily routine.</p>
-            </div>
-            <div class="about-card animate-up" style="animation-delay: 0.4s;">
-                <i class="fa-solid fa-clipboard-list" style="color: #FF9800;"></i>
-                <h3>Our Objective</h3>
-                <p>To provide clear guidance, reliable support, and realistic goals so you can make lasting improvements
-                    to your everyday health.</p>
-            </div>
-        </div>
-    </section>
+h1,
+h2,
+h3,
+.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="text-center mb-4 animate-up">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Sessions and personalized plans designed for your specific health
-                goals.</p>
-        </div>
-        <div class="swiper services-swiper animate-up">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="animation-delay: 0.2s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80"
-                            alt="Diet">
-                        <div class="service-content">
-                            <h3>Custom Diet Plans</h3>
-                            <p>Tailored nutritional frameworks to fit your lifestyle and
-                                bio-individuality.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="animation-delay: 0.4s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
-                            alt="Nutrition Coaching">
-                        <div class="service-content">
-                            <h3>Nutrition Coaching</h3>
-                            <p>Deep dives into macros, micros, and supplements to optimize your energy and vitality.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="animation-delay: 0.6s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80"
-                            alt="Acupuncture & Acupressure">
-                        <div class="service-content">
-                            <h3>Acupuncture &amp; Acupressure</h3>
-                            <p>Stimulating pressure points to relieve pain and restore energy balance.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="animation-delay: 0.8s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
-                            alt="Physiotherapy">
-                        <div class="service-content">
-                            <h3>Physiotherapy &amp; Exercise Therapy</h3>
-                            <p>Guided exercises to improve mobility, strength, and physical recovery.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="animation-delay: 1.0s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"
-                            alt="Yoga Therapy">
-                        <div class="service-content">
-                            <h3>Yoga Therapy</h3>
-                            <p>Therapeutic yoga practices for flexibility, relaxation, and holistic wellness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="animation-delay: 1.2s;">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
-                            alt="Lifestyle Consultation">
-                        <div class="service-content">
-                            <h3>Lifestyle Consultation</h3>
-                            <p>Personalized guidance for healthier habits and balanced living.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-nav-container">
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-    </section>
+.text-center {
+    text-align: center;
+}
 
-    <!-- Wellness Quiz Assessment Callout -->
-    <section id="wellness-assessment" class="wellness-assessment">
-        <div class="assessment-bg-circle-1"></div>
-        <div class="assessment-bg-circle-2"></div>
+.mb-2 {
+    margin-bottom: 2rem;
+}
 
-        <div class="assessment-container animate-up">
-            <div class="assessment-content">
-                <span class="assessment-badge">Take the Assessment</span>
-                <h2 class="playfair" style="font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;">How "Healthy" Are
-                    You Really?</h2>
-                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 35px; line-height: 1.7;">Our
-                    naturopathic-backed wellness quiz analyzes your sleep, nutrition, and mental harmony to provide a
-                    personalized health report and actionable next steps.</p>
-                <div class="assessment-features">
-                    <div class="assessment-feature-item">
-                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
-                        <span>Takes 3-5 mins</span>
-                    </div>
-                    <div class="assessment-feature-item">
-                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
-                        <span>Instant PDF Report</span>
-                    </div>
-                    <div class="assessment-feature-item">
-                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
-                        <span>100% Free</span>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px;">
-                    <button class="btn-primary" onclick="location.href='hub.html'"
-                        style="background: white; color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.2); min-width: 250px; height: 60px; display: flex; align-items: center; justify-content: center;">Start
-                        Your Assessment <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
-                    <button class="btn-secondary" onclick="location.href='calculators.html'"
-                        style="border-color: #FFD93D; color: #FFD93D; border-radius: 50px; min-width: 250px; height: 60px; display: flex; align-items: center; justify-content: center; background: transparent;">Vitality
-                        Toolkit <i class="fa-solid fa-bolt" style="margin-left: 10px;"></i></button>
-                </div>
+.mb-4 {
+    margin-bottom: 4rem;
+}
 
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--bg-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: var(--transition);
+}
 
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    list-style: none;
+}
 
-            </div>
-            <div class="assessment-card-wrapper">
-                <div class="assessment-glass-card">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">🥗</div>
-                    <h3 class="playfair" style="font-size: 1.5rem; margin-bottom: 15px;">Personalized Guidance</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">Get a detailed breakdown of your unique body
-                        constitution and habit recommendations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
 
-    <!-- Programs Section (Now How We Work) -->
-    <section id="programs" style="background: var(--bg-soft);">
-        <div class="text-center mb-4 animate-up">
-            <h2 class="section-title">How We Work</h2>
-            <p class="section-subtitle">A simple, transparent process to guide your wellness journey.</p>
-        </div>
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
 
-        <div class="programs-grid">
-            <div class="program-card animate-up">
-                <div>
-                    <i class="fa-solid fa-user-doctor" style="color: #9b59b6;"></i>
-                    <p>Consult</p>
-                </div>
-            </div>
-            <div class="program-card animate-up" style="animation-delay: 0.1s;">
-                <div>
-                    <i class="fa-solid fa-microscope" style="color: #e74c3c;"></i>
-                    <p>Analyze</p>
-                </div>
-            </div>
-            <div class="program-card animate-up" style="animation-delay: 0.2s;">
-                <div>
-                    <i class="fa-solid fa-mortar-pestle" style="color: #1abc9c;"></i>
-                    <p>Solutions</p>
-                </div>
-            </div>
-            <div class="program-card animate-up" style="animation-delay: 0.3s;">
-                <div>
-                    <i class="fa-solid fa-heart-pulse" style="color: #f1c40f;"></i>
-                    <p>Progress</p>
-                </div>
-            </div>
-        </div>
-    </section>
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    position: relative;
+}
 
-    <!-- Appointment Section -->
-    <section id="appointment">
-        <div class="appointment-container animate-up">
-            <div class="appointment-info">
-                <h2 class="playfair" style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Book a Consultation!
-                </h2>
-                <p style="opacity: 0.9; margin-bottom: 30px;">Get personalized advice to level up
-                    your health journey today.</p>
-                <img src="impact_premium.png" alt="Happy Community"
-                    style="border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); width: 100%;">
-            </div>
-            <div class="appointment-form">
-                <form id="appointmentForm">
-                    <input type="text" id="app_name" placeholder="Full Name" required>
-                    <input type="email" id="app_email" placeholder="Email Address" required>
-                    <input type="tel" id="app_phone" placeholder="Phone Number" required>
-                    <div style="display: flex; gap: 15px;">
-                        <input type="number" id="app_age" placeholder="Age" required>
-                        <input type="text" id="app_gender" placeholder="Gender" required>
-                    </div>
-                    <textarea id="app_goals" placeholder="Tell us about your health goals..."
-                        style="width: 100%; height: 100px; padding: 15px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 15px; font-family: inherit;"></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Schedule Consultation</button>
-                    <!-- <p style="font-size: 0.8rem; color: #999; margin-top: 15px; text-align: center;">By clicking "Book
-                        Now", you agree to our terms of service.</p> -->
-                </form>
-            </div>
-        </div>
-    </section>
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: var(--transition);
+}
 
-    <!-- Articles Section -->
-    <section id="articles">
-        <div class="text-center mb-4 animate-up">
-            <h2 class="section-title">Our Library</h2>
-            <p class="section-subtitle">Stay informed with the insights from our Library </p>
-        </div>
-        <div class="swiper articles-swiper animate-up">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="article-card">
-                        <img src="yoga-article.jpg" alt="Yoga">
-                        <div class="article-content">
-                            <h4>Yoga for Stress Relief</h4>
-                            <p>Science shows yoga lowers cortisol and regulates the autonomic nervous system. Our guide
-                                covers
-                                pranayama and restorative flows to trigger your "rest and digest" response.</p>
-                            <a href="yoga-guide.html" class="btn-secondary"
-                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="article-card">
-                        <img src="meditation-yog.jpg" alt="Meditation">
-                        <div class="article-content">
-                            <h4>Meditation Mastery</h4>
-                            <p>Master the "Blue Sky" technique. Learn how body scans and focused attention can reduce
-                                anxiety by
-                                31% and boost your daily focus by cultivating mindful awareness.</p>
-                            <a href="meditation-guide.html" class="btn-secondary"
-                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="article-card">
-                        <img src="gut-article.jpg" alt="Gut Health">
-                        <div class="article-content">
-                            <h4>Gut Health & Immunity</h4>
-                            <p>Your gut is your "second brain," housing 70% of your immune system. Explore AMA-backed
-                                strategies
-                                on prebiotics and the gut-brain axis to optimize your total health.</p>
-                            <a href="gut-health-guide.html" class="btn-secondary"
-                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-nav-container">
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-    </section>
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" style="background: var(--bg-soft); overflow: hidden; padding: 60px 0;">
-        <div class="text-center mb-4 animate-up">
-            <h2 class="section-title">Happy Healing</h2>
-            <p class="section-subtitle">Real stories from our wellness community.</p>
-        </div>
-        <div class="testimonial-container">
-            <div class="testimonial-track">
-                <!-- Card 1 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <p>"Do visit to experience a calm, holistic approach to your health. Dr. Pooja is dedicated to root
-                        cause analysis and targeted treatment for your health concern."</p>
-                    <h5>Namitha KS</h5>
-                </div>
-                <!-- Card 2 (Rating Only) -->
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Gururaj Joshi</h5>
-                </div> -->
-                <!-- Card 3 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <p>"Dr Pooja is a professional who listens patiently. She digs up health concerns from childhood to
-                        present. I liked her approach—mainly goes for the root cause. My thyroid nodules are already
-                        shrinking. Thanks a lot Dr. Pooja!"</p>
-                    <h5>Varalakshmi Prashanth</h5>
-                </div>
-                <!-- Card 4 (Rating Only) -->
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Raghupraveer Nippani</h5> -->
-                <!-- </div> -->
-                <!-- Card 5 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"I had osteo arthritis with leg pains. Underwent treatment of physiotherapy and acupuncture. I am
-                        feeling much better now; doctor is knowledgeable and very kind."</p>
-                    <h5>Indira Desai</h5>
-                </div>
-                <!-- Card 6 (Rating Only) -->
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Raghu Nippani</h5> -->
-                <!-- </div> -->
-                <!-- Card 7 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Dr. Pooja is a real professional. She listens to every single query you have and responds with
-                        utmost confidence. The atmosphere and vibe in the clinic itself feels healing."</p>
-                    <h5>Mukund</h5>
-                </div>
-                <!-- Card 8 (Rating Only) -->
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Sameer Desai</h5>
-                </div> -->
-                <!-- Card 9 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Top destination for holistic wellness and natural healing."</p>
-                    <h5>Rakshitha R</h5>
-                </div>
-                <!-- Card 10 (Rating Only) -->
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <h5>Pradyumna Arakeri</h5>
-                </div> -->
-                <!-- Card 11 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Looking to rejuvenate yourself? Your search ends here. This clinic offers a homely healing
-                        environment and Dr Pooja's expertise is truly dedicated. I personally loved the ambience."</p>
-                    <h5>Keerthana Mahalathkar</h5>
-                </div>
-                <!-- Card 12 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"A calm atmosphere. Dr. Pooja is really kind and treats ailments by finding out the root cause.
-                        Had issues with sleeping and aromatherapy really helped."</p>
-                    <h5>Aditi Arakeri</h5>
-                </div>
-                <!-- Card 13 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Clean, calming setup with great equipment. I took physiotherapy for back and neck stiffness and
-                        am feeling a big improvement. Highly recommended!"</p>
-                    <h5>Pratham G</h5>
-                </div>
-                <!-- Card 14 -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"I had a wonderful experience. Homely and comforting atmosphere using simple, natural remedies
-                        from home. Practical, sustainable and very effective. Highly recommended!"</p>
-                    <h5>Jyothi Kulkarni</h5>
-                </div>
+.btn-donate {
+    background: var(--primary);
+    color: var(--white) !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: var(--transition);
+}
 
-                <!-- Duplicate for seamless loop (First 6 units) -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Do visit to experience a calm, holistic approach to your health. Dr. Pooja is dedicated to root
-                        cause analysis and targeted treatment for your health concern."</p>
-                    <h5>Namitha KS</h5>
-                </div>
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Gururaj Joshi</h5>
-                </div> -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Dr Pooja is a professional who listens patiently. She digs up health concerns from childhood to
-                        present. I liked her approach—mainly goes for the root cause. My thyroid nodules are already
-                        shrinking. Thanks a lot Dr. Pooja!"</p>
-                    <h5>Varalakshmi Prashanth</h5>
-                </div>
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Raghupraveer Nippani</h5>
-                </div> -->
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"I had osteo arthritis with leg pains. Underwent treatment of physiotherapy and acupuncture. I am
-                        feeling much better now; doctor is knowledgeable and very kind."</p>
-                    <h5>Indira Desai</h5>
-                </div>
-                <!-- <div class="testimonial-card rating-only-card">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <h5>Raghu Nippani</h5>
-                </div> -->
-            </div>
-        </div>
-    </section>
+.btn-donate:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(89, 48, 49, 0.3);
+}
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-info">
-                <div class="footer-logo">Kshiti Naturopathy & Yoga</div>
-                <p style="opacity: 0.7; max-width: 300px;">Empowering your journey to holistic health through
-                    science-backed practices and compassionate care.</p>
-                <div style="margin-top: 20px; font-size: 1.5rem;">
-                    <a href="https://www.instagram.com/kshiti.naturopathy?igsh=b2lyYWhra2xjZHRw" target="_blank"
-                        style="color: inherit;"><i class="fa-brands fa-instagram"
-                            style="margin-right: 15px; cursor: pointer;"></i></a>
-                </div>
-            </div>
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 8%;
+    gap: 50px;
+    background: linear-gradient(135deg, #fffbf5 0%, #fff1ec 100%);
+}
 
-            <div class="footer-links">
-                <h4>Contact Us</h4>
-                <p style="opacity: 0.7; margin-bottom: 10px;"><i class="fa-solid fa-location-dot"></i>
-                    RajaRajeshwari
-                    Nagar, Bangalore</p>
-                <p style="opacity: 0.7; margin-bottom: 10px;"><i class="fa-solid fa-phone"></i> +91 89514 05503</p>
-                <p style="opacity: 0.7;"><i class="fa-solid fa-envelope"></i> alurkarpooja1702@gmail.com</p>
-            </div>
-        </div>
-        <div
-            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.6;">
-            &copy; 2026 Kshiti Naturopathy & Yoga. All Rights Reserved. Created with ❤️ for your wellbeing.
-        </div>
+.hero-content {
+    flex: 1;
+}
+
+.hero-content p {
+    color: var(--secondary);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-content h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary);
+    padding: 15px 35px;
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-img {
+    flex: 1;
+    position: relative;
+}
+
+.hero-img img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 30px 30px 0 var(--accent);
+    transition: var(--transition);
+}
+
+section {
+    padding: var(--section-padding);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.about-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.about-card i {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.services-swiper {
+    width: 100%;
+    padding: 40px 0 40px;
+    overflow: hidden;
+}
+
+.services-swiper .swiper-slide {
+    height: auto;
+    transition: transform 0.4s ease;
+    transform: scale(0.88);
+}
+
+.services-swiper .swiper-slide-active {
+    transform: scale(1.28);
+    z-index: 2;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* Softer, broader shadow */
+    transition: var(--transition);
+    overflow: hidden;
+    /* Clips image corners */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: saturate(1.1) contrast(1.02);
+    border-radius: 0;
+    margin: 0;
+}
+
+.service-content {
+    padding: 30px 20px;
+    flex-grow: 1;
+}
+
+.service-card:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Swiper Navigation Custom Styles */
+.swiper-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.swiper-nav-container .swiper-button-prev,
+.swiper-nav-container .swiper-button-next {
+    position: static;
+    margin: 0;
+    width: 45px;
+    height: 45px;
+    background: #1f1f1f;
+    color: var(--white);
+    border-radius: 50%;
+}
+
+.swiper-nav-container .swiper-button-prev::after,
+.swiper-nav-container .swiper-button-next::after {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.swiper-nav-container .swiper-pagination {
+    position: static !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Control bullet spacing entirely here */
+    margin: 0 !important;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: #ccc !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    /* Eliminate internal swiper margins so 'gap' works cleanly */
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--secondary) !important;
+    transform: scale(1.2);
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.program-card {
+    background: var(--white);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    border: 2px solid var(--accent);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.program-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.program-card p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.program-card:hover {
+    background: var(--secondary);
+    color: white;
+    transform: scale(1.1);
+    border-color: var(--secondary);
+}
+
+/* Wellness Assessment Callout */
+.wellness-assessment {
+    background: linear-gradient(135deg, var(--primary), #3d2122);
+    color: white;
+    border-radius: var(--radius-lg);
+    margin: 20px 5% 80px;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.assessment-bg-circle-1 {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(249, 133, 92, 0.15);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.assessment-bg-circle-2 {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 213, 214, 0.08);
+    border-radius: 50%;
+    filter: blur(45px);
+}
+
+.assessment-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.assessment-content {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.assessment-badge {
+    background: var(--secondary);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.assessment-features {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.assessment-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.assessment-card-wrapper {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.assessment-glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(3deg);
+}
 
 
-    </footer>
+.appointment-container {
+    display: flex;
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
 
-    <!-- Floating Elements -->
-    <a href="#home" id="scroll-top" class="floating-btn"><i class="fa-solid fa-arrow-up"></i></a>
-    <a href="https://wa.me/918951405503?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20a%20consultation%20at%20Kshiti%20Naturopathy%20%26%20Yoga."
-        target="_blank" id="floating-whatsapp" class="floating-btn whatsapp-btn floating"
-        title="Chat with Doctor on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+.appointment-info {
+    flex: 1;
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    <script>
-        // Appointment Handling
-        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+.appointment-form {
+    flex: 1.2;
+    padding: 60px;
+}
 
-            // 1. Prepare Data
-            const formData = {
-                name: document.getElementById('app_name').value,
-                email: document.getElementById('app_email').value,
-                phone: document.getElementById('app_phone').value,
-                age: document.getElementById('app_age').value,
-                gender: document.getElementById('app_gender').value,
-                goals: document.getElementById('app_goals').value,
-                date: new Date().toLocaleString()
-            };
+.appointment-form input,
+.appointment-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    font-family: inherit;
+    transition: var(--transition);
+}
 
-            // 2. Save Locally (for Doctor Dashboard)
-            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-            appointments.push(formData);
-            localStorage.setItem('appointments', JSON.stringify(appointments));
+.appointment-form input:focus,
+.appointment-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    background: var(--bg-soft);
+}
 
-            // Increment Notification Count
-            let notifCount = parseInt(localStorage.getItem('notifCount') || '0');
-            localStorage.setItem('notifCount', (notifCount + 1).toString());
+.articles-swiper {
+    width: 100%;
+    padding: 30px 0 60px;
+    overflow: hidden;
+}
 
-            // 3. Send to Gmail via Google Apps Script (Option 2)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyA2XaP2I9ZP4vKI2yZ8YxpoKh1tlHTuHA89CgB6w_2m1-lZmGqqlCc2XX3U_g2tlrUrg/exec'; // You will get this in the steps below
+.articles-swiper .swiper-slide {
+    height: auto;
+}
 
-            // Show loading state
-            const submitBtn = this.querySelector('button');
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = 'Sending Notification...';
-            submitBtn.disabled = true;
 
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-                .then(() => {
-                    alert('Appointment submitted! Dr. Pooja has been notified via Gmail.');
-                    this.reset();
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Sent to dashboard, but email notification failed. Please call or WhatsApp if urgent.');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                });
-        });
+.article-card {
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
 
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+.article-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
 
-        document.querySelectorAll('.animate-up').forEach(el => {
-            observer.observe(el);
-        });
+.article-content {
+    padding: 30px;
+}
 
-        const styleInject = document.createElement('style');
-        styleInject.textContent = `
-            .animate-up { opacity: 0; }
-            .animate-up.visible { opacity: 1; animation: fadeInUp 0.8s ease-out forwards; }
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px 5% 30px;
+}
 
-            @keyframes pulse-dot {
-                0%, 100% { opacity: 0.3; transform: scale(1); }
-                50% { opacity: 1; transform: scale(1.4); }
-            }
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
 
-            /* Nav link hover underline effect */
-            .nav-links a {
-                position: relative;
-                padding-bottom: 3px;
-            }
-            .nav-links a::after {
-                content: '';
-                position: absolute;
-                bottom: 0; left: 0;
-                width: 0; height: 2px;
-                background: var(--secondary);
-                transition: width 0.3s ease;
-                border-radius: 2px;
-            }
-            .nav-links a:hover::after { width: 100%; }
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
 
-            /* About card lift on hover */
-            .about-card {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .about-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-            }
+.footer-links h4 {
+    margin-bottom: 1.5rem;
+    font-family: 'Playfair Display', serif;
+}
 
-            /* Program card pulse ring on hover */
-            .program-card {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .program-card:hover {
-                transform: scale(1.08);
-                box-shadow: 0 0 0 6px rgba(var(--secondary-rgb, 255,140,90), 0.2), 0 15px 40px rgba(0,0,0,0.1);
-            }
+.footer-links ul {
+    list-style: none;
+}
 
-            /* Article card lift */
-            .article-card {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .article-card:hover {
-                transform: translateY(-6px);
-            }
+.footer-links li {
+    margin-bottom: 10px;
+}
 
-            /* Footer logo – no hover expand */
-        `;
-        document.head.appendChild(styleInject);
+.footer-links a {
+    color: #ffd5d6;
+    text-decoration: none;
+    transition: var(--transition);
+}
 
-        // Scroll Progress Bar & Scroll Top Button
-        const progressBar = document.getElementById('scroll-progress-bar');
-        const scrollTopBtn = document.getElementById('scroll-top');
+/* Floating Action Buttons */
+.floating-btn {
+    position: fixed;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: var(--transition);
+    text-decoration: none;
+}
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const pct = (scrollTop / docHeight) * 100;
-            if (progressBar) progressBar.style.width = pct + '%';
+#scroll-top {
+    bottom: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
 
-            // Show scroll to top button after some scrolling
-            if (scrollTop > 300) {
-                if (scrollTopBtn) {
-                    scrollTopBtn.style.opacity = '1';
-                    scrollTopBtn.style.pointerEvents = 'auto';
-                }
-            } else {
-                if (scrollTopBtn) {
-                    scrollTopBtn.style.opacity = '0';
-                    scrollTopBtn.style.pointerEvents = 'none';
-                }
-            }
-        });
+.whatsapp-btn {
+    bottom: 110px;
+    background: #25D366;
+    color: #fff;
+}
 
-        // Hamburger Menu Toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('active');
+.floating-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 150px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        right: 20px;
+    }
+
+    #scroll-top {
+        bottom: 20px;
+    }
+
+    .whatsapp-btn {
+        bottom: 85px;
+    }
+
+    /* NAV */
+    nav ul {
+        padding: 0 15px;
+        gap: 10px;
+    }
+
+    .nav-brand img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        /* White background for mobile version only */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger-icon {
+        display: block !important;
+        margin-left: auto;
+    }
+
+    /* HERO */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 100px 20px 40px;
+        gap: 20px;
+        min-height: auto;
+    }
+
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-content h3 {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .hero-content p {
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+
+
+    .hero-btns {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-img {
+        width: 50%;
+        /* Scale down a bit more to fit */
+        margin: 0 auto;
+    }
+
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+
+    .hero-img img {
+        box-shadow: 23px 23px 0 var(--accent);
+    }
+
+
+
+    /* SECTIONS */
+    section {
+        padding: 50px 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* ESSENCE CARDS */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card:last-child {
+        grid-column: span 1;
+        width: 100%;
+    }
+
+    /* SERVICES SWIPER */
+    .services-swiper {
+        padding: 20px 0;
+    }
+
+    .services-swiper .swiper-slide {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .services-swiper .swiper-slide-active {
+        transform: scale(1.02);
+    }
+
+    .service-card img {
+        height: 180px;
+    }
+
+    /* HOW WE WORK CIRCLES */
+    .programs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .program-card {
+        width: 140px;
+        height: 140px;
+    }
+
+    .program-card i {
+        font-size: 1.6rem;
+    }
+
+    /* APPOINTMENT */
+    .appointment-container {
+        flex-direction: column;
+        border-radius: 20px;
+    }
+
+    .appointment-info {
+        padding: 30px 20px;
+    }
+
+    .appointment-form {
+        padding: 30px 20px;
+    }
+
+    .appointment-form input,
+    .appointment-form select,
+    .appointment-form textarea {
+        font-size: 0.9rem;
+    }
+
+    /* ARTICLES SWIPER MOBILE */
+    .articles-swiper {
+        padding: 20px 0 50px;
+    }
+
+
+    /* FOOTER */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* ASSESSMENT CALLOUT MOBILE */
+    .wellness-assessment {
+        padding: 40px 20px;
+        margin: 20px 15px 40px;
+        border-radius: 25px;
+        text-align: center;
+    }
+
+    .assessment-container {
+        gap: 30px;
+    }
+
+    .assessment-content {
+        min-width: 100%;
+    }
+
+    .assessment-content h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .assessment-features {
+        justify-content: center;
+    }
+
+    .assessment-card-wrapper {
+        min-width: 100%;
+    }
+
+    .assessment-glass-card {
+        padding: 30px 20px;
+        transform: rotate(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card:last-child {
+        grid-column: span 1;
+        width: 100%;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .program-card {
+        width: 120px;
+        height: 120px;
+    }
+
+    .program-card i {
+        font-size: 1.4rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .swiper-nav-container .swiper-button-prev,
+    .swiper-nav-container .swiper-button-next {
+        width: 36px;
+        height: 36px;
+    }
+
+    .swiper-nav-container .swiper-button-prev::after,
+    .swiper-nav-container .swiper-button-next::after {
+        font-size: 0.9rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        padding: 0 10px;
+    }
+
+    .nav-brand img {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+/* Testimonials Scrolling Animation */
+.testimonial-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-track {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    animation: scrollTestimonials 45s linear infinite;
+    padding: 20px 0;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 30px;
+    margin: 0 20px;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    text-align: left;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card.rating-only-card {
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-card.rating-only-card .stars {
+    margin-bottom: 5px;
+}
+
+.testimonial-card.rating-only-card h5 {
+    margin: 0;
+}
+
+
+
+
+.testimonial-card p {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.testimonial-card h5 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.testimonial-card .stars {
+    color: #f1c40f;
+    margin-bottom: 15px;
+}
+
+@keyframes scrollTestimonials {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-4610px);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 280px;
+    }
+
+    .testimonial-card.rating-only-card {
+        width: 150px;
+        height: 150px;
+        min-height: unset;
+    }
+
+    @keyframes scrollTestimonials {
+        0% {
+            transform: translateX(0);
         }
 
-        // Auto-close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('nav-links').classList.remove('active');
-            });
-        });
-    </script>
-    <!-- Doctor Login Modal -->
-    <div id="doctorAuthModal"
-        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
-        <div
-            style="background:var(--white); padding:40px; border-radius:15px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.2); max-width:400px; width:90%;">
-            <h3 class="playfair" style="margin-bottom:20px; font-size:2rem; color:var(--primary);"><i
-                    class="fa-solid fa-user-lock"></i> Doctor Access</h3>
-            <p style="margin-bottom:20px; color:#555;">Please securely log in to access the Appointment Database.
-            </p>
-            <input type="text" id="docUser" placeholder="Username"
-                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:15px; font-family:'Poppins', sans-serif;">
-            <input type="password" id="docPass" placeholder="Password"
-                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:20px; font-family:'Poppins', sans-serif;">
-            <div style="display:flex; gap:10px;">
-                <button onclick="document.getElementById('doctorAuthModal').style.display='none'" class="btn-secondary"
-                    style="flex:1;">Cancel</button>
-                <button onclick="authenticateDoctor()" class="btn-primary" style="flex:1;">Login</button>
-            </div>
-            <p id="authError" style="color:#d9534f; margin-top:15px; display:none; font-weight:600;">Invalid
-                credentials.</p>
-        </div>
-    </div>
-
-    <script>
-        function openDoctorLogin() {
-            document.getElementById('doctorAuthModal').style.display = 'flex';
+        100% {
+            transform: translateX(-3830px);
         }
+    }
 
-        function authenticateDoctor() {
-            const u = document.getElementById('docUser').value;
-            const p = document.getElementById('docPass').value;
-            if (u === 'doctor' && p === 'kshiti2026') {
-                sessionStorage.setItem('docAuth', 'true');
-                location.href = 'hub.html?openDash=true';
-            } else {
-                document.getElementById('authError').style.display = 'block';
-            }
+    /* Article Reader Responsiveness */
+    .article-reader {
+        max-width: 850px;
+        margin: 120px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 30px;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+    }
+
+    .article-header h1 {
+        font-size: 2rem !important;
+    }
+
+    .article-body {
+        font-size: 1rem;
+    }
+
+    .hamburger-icon {
+        display: block !important;
+    }
+
+    @media (max-width: 768px) {
+        .article-reader {
+            margin: 100px 15px 40px;
+            padding: 30px 20px;
+            border-radius: 20px;
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const servicesSwiper = new Swiper('.services-swiper', {
-                slidesPerView: 1,
-                centeredSlides: true,
-                spaceBetween: 30,
-                loop: true,
-                breakpoints: {
-                    768: {
-                        slidesPerView: 3,
-                    }
-                },
-                pagination: {
-                    el: '.services-swiper .swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.services-swiper .swiper-button-next',
-                    prevEl: '.services-swiper .swiper-button-prev',
-                },
-            });
+    }
 
-            const articlesSwiper = new Swiper('.articles-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: false,
-                breakpoints: {
-                    768: {
-                        slidesPerView: 3,
-                    },
-                    0: {
-                        slidesPerView: 1,
-                    }
-                },
-                pagination: {
-                    el: '.articles-swiper .swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.articles-swiper .swiper-button-next',
-                    prevEl: '.articles-swiper .swiper-button-prev',
-                },
-            });
-
-            // Re-enable/disable swiper on resize for the articles one if needed
-            // But Swiper 10 handles breakpoints pretty well.
-            // If the user wants traditional grid on desktop, we can just use 3 slides per view.
-        });
-    </script>
-</body>
-
-</html>
+    @media (min-width: 769px) {
+        .articles-swiper .swiper-nav-container {
+            display: none !important;
+        }
+    }
+}
