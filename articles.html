@@ -99,6 +99,21 @@
             margin-bottom: 15px;
             font-weight: 600;
         }
+
+        @media (max-width: 768px) {
+            .library-hero h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .articles-full-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .search-container {
+                margin: -20px 20px 40px;
+            }
+        }
     </style>
 </head>
 
@@ -144,7 +159,7 @@
             <span class="tag"
                 style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); z-index: 10;">Yoga
                 & Breath</span>
-            <img src="img/yoga-article.jpg" alt="Yoga for Stress">
+            <img src="yoga-article.jpg" alt="Yoga for Stress">
             <div class="content">
                 <h3 class="playfair" style="font-size: 1.5rem; margin-bottom: 15px;">Yoga for Stress Relief</h3>
                 <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">Science shows yoga lowers cortisol and
@@ -161,7 +176,7 @@
         <article class="article-card">
             <span class="tag"
                 style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); z-index: 10;">Mindfulness</span>
-            <img src="img/meditation-yog.jpg" alt="Meditation Mastery">
+            <img src="meditation-yog.jpg" alt="Meditation Mastery">
             <div class="content">
                 <h3 class="playfair" style="font-size: 1.5rem; margin-bottom: 15px;">Meditation Mastery</h3>
                 <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">Master the "Blue Sky" technique. Learn
@@ -180,7 +195,7 @@
             <span class="tag"
                 style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); z-index: 10;">Gut
                 Health</span>
-            <img src="img/gut-article.jpg" alt="Gut Health Immunity">
+            <img src="gut-article.jpg" alt="Gut Health Immunity">
             <div class="content">
                 <h3 class="playfair" style="font-size: 1.5rem; margin-bottom: 15px;">Gut Health & Immunity</h3>
                 <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">Your gut is your "second brain," housing
@@ -198,7 +213,7 @@
     <footer style="background: var(--primary); color: white; padding: 60px 20px; text-align: center;">
         <div class="nav-brand"
             style="font-size: 2rem; margin-bottom: 20px; justify-content: center; color: white !important;">
-            <img src="img/LOGO.png" alt="Kshiti Logo"
+            <img src="logo.png" alt="Kshiti Logo"
                 style="width: 50px; height: 50px; filter: brightness(0) invert(1); margin-right: 15px;">
             Kshiti Naturopathy & Yoga
         </div>
