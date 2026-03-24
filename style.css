@@ -714,6 +714,12 @@ footer {
         gap: 10px;
     }
 
+    .nav-brand img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+
     .nav-links {
         display: none;
         position: absolute;
