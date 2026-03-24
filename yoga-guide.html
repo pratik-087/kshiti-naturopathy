@@ -72,8 +72,11 @@
                 <a href="index.html">Home</a>
                 <a href="articles.html">Library</a>
             </li>
-            <li class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
-                <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
+            <li class="nav-controls" style="display: flex; align-items: center; gap: 20px;">
+                <!-- Hamburger Menu Icon -->
+                <div class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
+                    <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
             </li>
         </ul>
     </nav>
@@ -138,12 +141,15 @@
     <script>
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            } else {
-                navLinks.classList.add('active');
-            }
+            navLinks.classList.toggle('active');
         }
+
+        // Auto-close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
     </script>
 </body>
 
