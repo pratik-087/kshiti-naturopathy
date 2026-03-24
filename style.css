@@ -754,8 +754,7 @@ footer {
     }
 
     .hero-content h3 {
-        font-size: 0.95rem;
-        /* Shrunk slightly more */
+        font-size: 1rem;
         margin-bottom: 1.2rem;
         line-height: 1.4;
     }
@@ -786,8 +785,9 @@ footer {
 
 
     .hero-img img {
-        box-shadow: 15px 15px 0 var(--accent);
+        box-shadow: 23px 23px 0 var(--accent);
     }
+
 
 
     /* SECTIONS */
