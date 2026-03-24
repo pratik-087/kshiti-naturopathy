@@ -4,74 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meditation Mastery | Kshiti Naturopathy & Yoga</title>
+    <title>Kshiti Naturopathy & Yoga</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .article-reader {
-            max-width: 850px;
-            margin: 120px auto;
-            padding: 40px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: var(--card-shadow);
-        }
 
-        .article-header {
-            border-bottom: 2px solid var(--bg-soft);
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-        }
-
-        .main-img {
-            width: 100%;
-            border-radius: 20px;
-            margin-bottom: 40px;
-        }
-
-        .article-body {
-            line-height: 1.8;
-            color: #444;
-            font-size: 1.1rem;
-        }
-
-        .article-body h2 {
-            margin-top: 40px;
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .technique-box {
-            background: #fdfdfd;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #eee;
-        }
-
-        .technique-box h3 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-    </style>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
 <body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress-bar"
+        style="position:fixed; top:0; left:0; height:3px; width:0%; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index:99999; transition: width 0.1s linear; border-radius: 0 2px 2px 0;">
+    </div>
+
+    <!-- Sticky Navigation -->
     <nav>
         <ul>
             <li class="nav-brand">
-                <a href="index.html" style="display:flex; align-items:center;">
+                <a href="#home" style="display:flex; align-items:center;">
                     <img src="logo.png" alt="Kshiti Logo"
                         style="height: 70px; width: 70px; object-fit: cover; border-radius: 50%;">
                 </a>
             </li>
             <li class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="articles.html">Library</a>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="hub.html">Wellness Quiz</a>
+                <a href="calculators.html">Vitality Toolkit</a>
+                <a href="index.html#appointment">Bookings</a>
             </li>
             <li class="nav-controls" style="display: flex; align-items: center; gap: 20px;">
+                <div class="notification-bell" onclick="openDoctorLogin()" style="cursor: pointer;">
+                    <i class="fa-solid fa-user-doctor" style="font-size: 1.5rem; color: var(--primary);"></i>
+                </div>
                 <!-- Hamburger Menu Icon -->
                 <div class="hamburger-icon" onclick="toggleMenu()" style="display:none; cursor: pointer;">
                     <i class="fa-solid fa-bars" style="font-size: 1.8rem; color: var(--primary);"></i>
@@ -80,66 +61,679 @@
         </ul>
     </nav>
 
-    <div class="article-reader">
-        <div class="article-header">
-            <h1 class="playfair" style="font-size: 2.8rem; line-height: 1.2;">Meditation Mastery</h1>
-            <!-- <p style="color: #999; margin-top: 15px;">Published by Kshiti Naturopathy & Yoga • 7 min read</p> -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content animate-up">
+            <p>Welcome to Kshiti Naturopathy & Yoga HealthCare</p>
+            <h1>Heal Your Body. <br> Feed Your Soul.</h1>
+            <h3>Experience a harmonious blend of Yoga, Diet, Nutrition, and Diagnosis tailored to your unique wellness
+                journey.</h3>
+            <div class="hero-btns animate-up">
+                <button class="btn-primary" onclick="location.href='#appointment'">Book a Consultation <i
+                        class="fa-solid fa-calendar-check"></i></button>
+                <button class="btn-secondary" onclick="location.href='hub.html'">Wellness Quiz <i
+                        class="fa-solid fa-clipboard-check" style="margin-left: 8px;"></i></button>
+                <button class="btn-secondary" onclick="location.href='calculators.html'"
+                    style="background: rgba(255,255,255,0.1); border-color: #FFD93D; color: #FFD93D; border-radius: 50px;"><i
+                        class="fa-solid fa-bolt" style="margin-right:8px;"></i> Vitality Toolkit</button>
+            </div>
+
+
+        </div>
+        <div class="hero-img floating">
+            <img src="hero_premium.png" alt="Premium Wellness">
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="text-center mb-4 animate-up">
+            <h2 class="section-title">Our Essence</h2>
+            <p class="section-subtitle">Simple, practical health guidance based on proven methods. We're here to help
+                you build sustainable, healthy habits.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card animate-up">
+                <i class="fa-solid fa-staff-snake" style="color: #4CAF50;"></i>
+                <h3>Our Vision</h3>
+                <p>To make healthy living straightforward and accessible, helping people feel better and live healthier,
+                    more active lives.</p>
+            </div>
+            <div class="about-card animate-up" style="animation-delay: 0.2s;">
+                <i class="fa-solid fa-hand-holding-medical" style="color: #2196F3;"></i>
+                <h3>Our Mission</h3>
+                <p>To offer practical, actionable advice on diet, movement, and mental well-being that fits into your
+                    actual daily routine.</p>
+            </div>
+            <div class="about-card animate-up" style="animation-delay: 0.4s;">
+                <i class="fa-solid fa-clipboard-list" style="color: #FF9800;"></i>
+                <h3>Our Objective</h3>
+                <p>To provide clear guidance, reliable support, and realistic goals so you can make lasting improvements
+                    to your everyday health.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="text-center mb-4 animate-up">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Sessions and personalized plans designed for your specific health
+                goals.</p>
+        </div>
+        <div class="swiper services-swiper animate-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="animation-delay: 0.2s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80"
+                            alt="Diet">
+                        <div class="service-content">
+                            <h3>Custom Diet Plans</h3>
+                            <p>Tailored nutritional frameworks to fit your lifestyle and
+                                bio-individuality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="animation-delay: 0.4s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+                            alt="Nutrition Coaching">
+                        <div class="service-content">
+                            <h3>Nutrition Coaching</h3>
+                            <p>Deep dives into macros, micros, and supplements to optimize your energy and vitality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="animation-delay: 0.6s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80"
+                            alt="Acupuncture & Acupressure">
+                        <div class="service-content">
+                            <h3>Acupuncture &amp; Acupressure</h3>
+                            <p>Stimulating pressure points to relieve pain and restore energy balance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="animation-delay: 0.8s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
+                            alt="Physiotherapy">
+                        <div class="service-content">
+                            <h3>Physiotherapy &amp; Exercise Therapy</h3>
+                            <p>Guided exercises to improve mobility, strength, and physical recovery.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="animation-delay: 1.0s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"
+                            alt="Yoga Therapy">
+                        <div class="service-content">
+                            <h3>Yoga Therapy</h3>
+                            <p>Therapeutic yoga practices for flexibility, relaxation, and holistic wellness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="animation-delay: 1.2s;">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                            alt="Lifestyle Consultation">
+                        <div class="service-content">
+                            <h3>Lifestyle Consultation</h3>
+                            <p>Personalized guidance for healthier habits and balanced living.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-nav-container">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Quiz Assessment Callout -->
+    <section id="wellness-assessment" class="wellness-assessment">
+        <div class="assessment-bg-circle-1"></div>
+        <div class="assessment-bg-circle-2"></div>
+
+        <div class="assessment-container animate-up">
+            <div class="assessment-content">
+                <span class="assessment-badge">Take the Assessment</span>
+                <h2 class="playfair" style="font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;">How "Healthy" Are
+                    You Really?</h2>
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 35px; line-height: 1.7;">Our
+                    naturopathic-backed wellness quiz analyzes your sleep, nutrition, and mental harmony to provide a
+                    personalized health report and actionable next steps.</p>
+                <div class="assessment-features">
+                    <div class="assessment-feature-item">
+                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
+                        <span>Takes 3-5 mins</span>
+                    </div>
+                    <div class="assessment-feature-item">
+                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
+                        <span>Instant PDF Report</span>
+                    </div>
+                    <div class="assessment-feature-item">
+                        <i class="fa-solid fa-circle-check" style="color: var(--secondary);"></i>
+                        <span>100% Free</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px;">
+                    <button class="btn-primary" onclick="location.href='hub.html'"
+                        style="background: white; color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.2); min-width: 250px; height: 60px; display: flex; align-items: center; justify-content: center;">Start
+                        Your Assessment <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
+                    <button class="btn-secondary" onclick="location.href='calculators.html'"
+                        style="border-color: #FFD93D; color: #FFD93D; border-radius: 50px; min-width: 250px; height: 60px; display: flex; align-items: center; justify-content: center; background: transparent;">Vitality
+                        Toolkit <i class="fa-solid fa-bolt" style="margin-left: 10px;"></i></button>
+                </div>
+
+
+
+            </div>
+            <div class="assessment-card-wrapper">
+                <div class="assessment-glass-card">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🥗</div>
+                    <h3 class="playfair" style="font-size: 1.5rem; margin-bottom: 15px;">Personalized Guidance</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Get a detailed breakdown of your unique body
+                        constitution and habit recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section (Now How We Work) -->
+    <section id="programs" style="background: var(--bg-soft);">
+        <div class="text-center mb-4 animate-up">
+            <h2 class="section-title">How We Work</h2>
+            <p class="section-subtitle">A simple, transparent process to guide your wellness journey.</p>
         </div>
 
-        <!-- <img src="img/meditation-yog.jpg" alt="Meditation Practice" class="main-img"> -->
+        <div class="programs-grid">
+            <div class="program-card animate-up">
+                <div>
+                    <i class="fa-solid fa-user-doctor" style="color: #9b59b6;"></i>
+                    <p>Consult</p>
+                </div>
+            </div>
+            <div class="program-card animate-up" style="animation-delay: 0.1s;">
+                <div>
+                    <i class="fa-solid fa-microscope" style="color: #e74c3c;"></i>
+                    <p>Analyze</p>
+                </div>
+            </div>
+            <div class="program-card animate-up" style="animation-delay: 0.2s;">
+                <div>
+                    <i class="fa-solid fa-mortar-pestle" style="color: #1abc9c;"></i>
+                    <p>Solutions</p>
+                </div>
+            </div>
+            <div class="program-card animate-up" style="animation-delay: 0.3s;">
+                <div>
+                    <i class="fa-solid fa-heart-pulse" style="color: #f1c40f;"></i>
+                    <p>Progress</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="article-body">
-            <p>Meditation mastery refers to developing the ability to <strong>control the mind, improve focus, and
-                    achieve deep inner calm through regular meditation practice</strong>. Meditation trains the mind to
-                stay present, reducing overthinking and emotional stress. With consistent practice, individuals can
-                improve concentration, self-awareness, and mental clarity. Even <strong>10–15 minutes of daily
-                    meditation</strong> can help create a peaceful and balanced state of mind.</p>
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <div class="appointment-container animate-up">
+            <div class="appointment-info">
+                <h2 class="playfair" style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Book a Consultation!
+                </h2>
+                <p style="opacity: 0.9; margin-bottom: 30px;">Get personalized advice to level up
+                    your health journey today.</p>
+                <img src="impact_premium.png" alt="Happy Community"
+                    style="border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); width: 100%;">
+            </div>
+            <div class="appointment-form">
+                <form id="appointmentForm">
+                    <input type="text" id="app_name" placeholder="Full Name" required>
+                    <input type="email" id="app_email" placeholder="Email Address" required>
+                    <input type="tel" id="app_phone" placeholder="Phone Number" required>
+                    <div style="display: flex; gap: 15px;">
+                        <input type="number" id="app_age" placeholder="Age" required>
+                        <input type="text" id="app_gender" placeholder="Gender" required>
+                    </div>
+                    <textarea id="app_goals" placeholder="Tell us about your health goals..."
+                        style="width: 100%; height: 100px; padding: 15px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 15px; font-family: inherit;"></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Schedule Consultation</button>
+                    <!-- <p style="font-size: 0.8rem; color: #999; margin-top: 15px; text-align: center;">By clicking "Book
+                        Now", you agree to our terms of service.</p> -->
+                </form>
+            </div>
+        </div>
+    </section>
 
-            <h2>Common Meditation Techniques</h2>
+    <!-- Articles Section -->
+    <section id="articles">
+        <div class="text-center mb-4 animate-up">
+            <h2 class="section-title">Our Library</h2>
+            <p class="section-subtitle">Stay informed with the insights from our Library </p>
+        </div>
+        <div class="swiper articles-swiper animate-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <img src="yoga-article.jpg" alt="Yoga">
+                        <div class="article-content">
+                            <h4>Yoga for Stress Relief</h4>
+                            <p>Science shows yoga lowers cortisol and regulates the autonomic nervous system. Our guide
+                                covers
+                                pranayama and restorative flows to trigger your "rest and digest" response.</p>
+                            <a href="yoga-guide.html" class="btn-secondary"
+                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <img src="meditation-yog.jpg" alt="Meditation">
+                        <div class="article-content">
+                            <h4>Meditation Mastery</h4>
+                            <p>Master the "Blue Sky" technique. Learn how body scans and focused attention can reduce
+                                anxiety by
+                                31% and boost your daily focus by cultivating mindful awareness.</p>
+                            <a href="meditation-guide.html" class="btn-secondary"
+                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <img src="gut-article.jpg" alt="Gut Health">
+                        <div class="article-content">
+                            <h4>Gut Health & Immunity</h4>
+                            <p>Your gut is your "second brain," housing 70% of your immune system. Explore AMA-backed
+                                strategies
+                                on prebiotics and the gut-brain axis to optimize your total health.</p>
+                            <a href="gut-health-guide.html" class="btn-secondary"
+                                style="display: inline-block; margin-top: 15px; text-decoration: none;">Deep Dive >></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-nav-container">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
 
-            <div class="technique-box">
-                <h3>1. Mindfulness Meditation</h3>
-                <p>Focuses on observing thoughts and sensations without judgment.</p>
+    <!-- Testimonials Section -->
+    <section id="testimonials" style="background: var(--bg-soft); overflow: hidden; padding: 60px 0;">
+        <div class="text-center mb-4 animate-up">
+            <h2 class="section-title">Happy Healing</h2>
+            <p class="section-subtitle">Real stories from our wellness community.</p>
+        </div>
+        <div class="testimonial-container">
+            <div class="testimonial-track">
+                <!-- Card 1 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p>"Do visit to experience a calm, holistic approach to your health. Dr. Pooja is dedicated to root
+                        cause analysis and targeted treatment for your health concern."</p>
+                    <h5>Namitha KS</h5>
+                </div>
+                <!-- Card 2 (Rating Only) -->
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Gururaj Joshi</h5>
+                </div> -->
+                <!-- Card 3 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p>"Dr Pooja is a professional who listens patiently. She digs up health concerns from childhood to
+                        present. I liked her approach—mainly goes for the root cause. My thyroid nodules are already
+                        shrinking. Thanks a lot Dr. Pooja!"</p>
+                    <h5>Varalakshmi Prashanth</h5>
+                </div>
+                <!-- Card 4 (Rating Only) -->
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Raghupraveer Nippani</h5> -->
+                <!-- </div> -->
+                <!-- Card 5 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"I had osteo arthritis with leg pains. Underwent treatment of physiotherapy and acupuncture. I am
+                        feeling much better now; doctor is knowledgeable and very kind."</p>
+                    <h5>Indira Desai</h5>
+                </div>
+                <!-- Card 6 (Rating Only) -->
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Raghu Nippani</h5> -->
+                <!-- </div> -->
+                <!-- Card 7 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Dr. Pooja is a real professional. She listens to every single query you have and responds with
+                        utmost confidence. The atmosphere and vibe in the clinic itself feels healing."</p>
+                    <h5>Mukund</h5>
+                </div>
+                <!-- Card 8 (Rating Only) -->
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Sameer Desai</h5>
+                </div> -->
+                <!-- Card 9 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Top destination for holistic wellness and natural healing."</p>
+                    <h5>Rakshitha R</h5>
+                </div>
+                <!-- Card 10 (Rating Only) -->
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <h5>Pradyumna Arakeri</h5>
+                </div> -->
+                <!-- Card 11 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Looking to rejuvenate yourself? Your search ends here. This clinic offers a homely healing
+                        environment and Dr Pooja's expertise is truly dedicated. I personally loved the ambience."</p>
+                    <h5>Keerthana Mahalathkar</h5>
+                </div>
+                <!-- Card 12 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"A calm atmosphere. Dr. Pooja is really kind and treats ailments by finding out the root cause.
+                        Had issues with sleeping and aromatherapy really helped."</p>
+                    <h5>Aditi Arakeri</h5>
+                </div>
+                <!-- Card 13 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Clean, calming setup with great equipment. I took physiotherapy for back and neck stiffness and
+                        am feeling a big improvement. Highly recommended!"</p>
+                    <h5>Pratham G</h5>
+                </div>
+                <!-- Card 14 -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"I had a wonderful experience. Homely and comforting atmosphere using simple, natural remedies
+                        from home. Practical, sustainable and very effective. Highly recommended!"</p>
+                    <h5>Jyothi Kulkarni</h5>
+                </div>
+
+                <!-- Duplicate for seamless loop (First 6 units) -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Do visit to experience a calm, holistic approach to your health. Dr. Pooja is dedicated to root
+                        cause analysis and targeted treatment for your health concern."</p>
+                    <h5>Namitha KS</h5>
+                </div>
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Gururaj Joshi</h5>
+                </div> -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Dr Pooja is a professional who listens patiently. She digs up health concerns from childhood to
+                        present. I liked her approach—mainly goes for the root cause. My thyroid nodules are already
+                        shrinking. Thanks a lot Dr. Pooja!"</p>
+                    <h5>Varalakshmi Prashanth</h5>
+                </div>
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Raghupraveer Nippani</h5>
+                </div> -->
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"I had osteo arthritis with leg pains. Underwent treatment of physiotherapy and acupuncture. I am
+                        feeling much better now; doctor is knowledgeable and very kind."</p>
+                    <h5>Indira Desai</h5>
+                </div>
+                <!-- <div class="testimonial-card rating-only-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <h5>Raghu Nippani</h5>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">Kshiti Naturopathy & Yoga</div>
+                <p style="opacity: 0.7; max-width: 300px;">Empowering your journey to holistic health through
+                    science-backed practices and compassionate care.</p>
+                <div style="margin-top: 20px; font-size: 1.5rem;">
+                    <a href="https://www.instagram.com/kshiti.naturopathy?igsh=b2lyYWhra2xjZHRw" target="_blank"
+                        style="color: inherit;"><i class="fa-brands fa-instagram"
+                            style="margin-right: 15px; cursor: pointer;"></i></a>
+                </div>
             </div>
 
-            <div class="technique-box">
-                <h3>2. Breathing Meditation</h3>
-                <p>Concentrating on slow, deep breaths to calm the mind.</p>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <p style="opacity: 0.7; margin-bottom: 10px;"><i class="fa-solid fa-location-dot"></i>
+                    RajaRajeshwari
+                    Nagar, Bangalore</p>
+                <p style="opacity: 0.7; margin-bottom: 10px;"><i class="fa-solid fa-phone"></i> +91 89514 05503</p>
+                <p style="opacity: 0.7;"><i class="fa-solid fa-envelope"></i> alurkarpooja1702@gmail.com</p>
             </div>
-
-            <div class="technique-box">
-                <h3>3. Guided Meditation</h3>
-                <p>Listening to instructions that help achieve relaxation and focus.</p>
-            </div>
-
-            <div class="technique-box">
-                <h3>4. Mantra Meditation</h3>
-                <p>Repeating a word or phrase (like “Om”) to maintain concentration.</p>
-            </div>
-
-            <h2>Advantages of Meditation</h2>
-            <ul style="line-height: 1.8; margin-top: 15px; list-style-type: none; padding-left: 0;">
-                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Reduces stress
-                    and anxiety 😌</li>
-                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Improves focus
-                    and concentration 🧠</li>
-                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Enhances
-                    emotional control and self-awareness 🌱</li>
-                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Promotes inner
-                    peace and relaxation 🌸</li>
-                <li><i class="fa-solid fa-leaf" style="color:var(--secondary); margin-right: 10px;"></i> Improves
-                    overall mental well-being 💚</li>
-            </ul>
-
-            <!-- <p style="margin-top: 40px; font-style: italic; color: #777;">Based on Headspace Mindfulness Research &
-                Kshiti Wellness Team.</p> -->
+        </div>
+        <div
+            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.6;">
+            &copy; 2026 Kshiti Naturopathy & Yoga. All Rights Reserved. Created with ❤️ for your wellbeing.
         </div>
 
-        <div style="margin-top: 60px; text-align: center;">
-            <button onclick="location.href='hub.html'" class="btn-primary">Try the Mental Harmony Quiz</button>
-        </div>
-    </div>
+
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="#home" id="scroll-top" class="floating-btn"><i class="fa-solid fa-arrow-up"></i></a>
+    <a href="https://wa.me/918951405503?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20a%20consultation%20at%20Kshiti%20Naturopathy%20%26%20Yoga."
+        target="_blank" id="floating-whatsapp" class="floating-btn whatsapp-btn floating"
+        title="Chat with Doctor on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
     <script>
+        // Appointment Handling
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // 1. Prepare Data
+            const formData = {
+                name: document.getElementById('app_name').value,
+                email: document.getElementById('app_email').value,
+                phone: document.getElementById('app_phone').value,
+                age: document.getElementById('app_age').value,
+                gender: document.getElementById('app_gender').value,
+                goals: document.getElementById('app_goals').value,
+                date: new Date().toLocaleString()
+            };
+
+            // 2. Save Locally (for Doctor Dashboard)
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            appointments.push(formData);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+
+            // Increment Notification Count
+            let notifCount = parseInt(localStorage.getItem('notifCount') || '0');
+            localStorage.setItem('notifCount', (notifCount + 1).toString());
+
+            // 3. Send to Gmail via Google Apps Script (Option 2)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyA2XaP2I9ZP4vKI2yZ8YxpoKh1tlHTuHA89CgB6w_2m1-lZmGqqlCc2XX3U_g2tlrUrg/exec'; // You will get this in the steps below
+
+            // Show loading state
+            const submitBtn = this.querySelector('button');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending Notification...';
+            submitBtn.disabled = true;
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+                .then(() => {
+                    alert('Appointment submitted! Dr. Pooja has been notified via Gmail.');
+                    this.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Sent to dashboard, but email notification failed. Please call or WhatsApp if urgent.');
+                })
+                .finally(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        const styleInject = document.createElement('style');
+        styleInject.textContent = `
+            .animate-up { opacity: 0; }
+            .animate-up.visible { opacity: 1; animation: fadeInUp 0.8s ease-out forwards; }
+
+            @keyframes pulse-dot {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.4); }
+            }
+
+            /* Nav link hover underline effect */
+            .nav-links a {
+                position: relative;
+                padding-bottom: 3px;
+            }
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0;
+                width: 0; height: 2px;
+                background: var(--secondary);
+                transition: width 0.3s ease;
+                border-radius: 2px;
+            }
+            .nav-links a:hover::after { width: 100%; }
+
+            /* About card lift on hover */
+            .about-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .about-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            }
+
+            /* Program card pulse ring on hover */
+            .program-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .program-card:hover {
+                transform: scale(1.08);
+                box-shadow: 0 0 0 6px rgba(var(--secondary-rgb, 255,140,90), 0.2), 0 15px 40px rgba(0,0,0,0.1);
+            }
+
+            /* Article card lift */
+            .article-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .article-card:hover {
+                transform: translateY(-6px);
+            }
+
+            /* Footer logo – no hover expand */
+        `;
+        document.head.appendChild(styleInject);
+
+        // Scroll Progress Bar & Scroll Top Button
+        const progressBar = document.getElementById('scroll-progress-bar');
+        const scrollTopBtn = document.getElementById('scroll-top');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = (scrollTop / docHeight) * 100;
+            if (progressBar) progressBar.style.width = pct + '%';
+
+            // Show scroll to top button after some scrolling
+            if (scrollTop > 300) {
+                if (scrollTopBtn) {
+                    scrollTopBtn.style.opacity = '1';
+                    scrollTopBtn.style.pointerEvents = 'auto';
+                }
+            } else {
+                if (scrollTopBtn) {
+                    scrollTopBtn.style.opacity = '0';
+                    scrollTopBtn.style.pointerEvents = 'none';
+                }
+            }
+        });
+
+        // Hamburger Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
@@ -150,6 +744,95 @@
             link.addEventListener('click', () => {
                 document.getElementById('nav-links').classList.remove('active');
             });
+        });
+    </script>
+    <!-- Doctor Login Modal -->
+    <div id="doctorAuthModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+        <div
+            style="background:var(--white); padding:40px; border-radius:15px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.2); max-width:400px; width:90%;">
+            <h3 class="playfair" style="margin-bottom:20px; font-size:2rem; color:var(--primary);"><i
+                    class="fa-solid fa-user-lock"></i> Doctor Access</h3>
+            <p style="margin-bottom:20px; color:#555;">Please securely log in to access the Appointment Database.
+            </p>
+            <input type="text" id="docUser" placeholder="Username"
+                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:15px; font-family:'Poppins', sans-serif;">
+            <input type="password" id="docPass" placeholder="Password"
+                style="width:100%; padding:15px; border:2px solid #eee; border-radius:8px; margin-bottom:20px; font-family:'Poppins', sans-serif;">
+            <div style="display:flex; gap:10px;">
+                <button onclick="document.getElementById('doctorAuthModal').style.display='none'" class="btn-secondary"
+                    style="flex:1;">Cancel</button>
+                <button onclick="authenticateDoctor()" class="btn-primary" style="flex:1;">Login</button>
+            </div>
+            <p id="authError" style="color:#d9534f; margin-top:15px; display:none; font-weight:600;">Invalid
+                credentials.</p>
+        </div>
+    </div>
+
+    <script>
+        function openDoctorLogin() {
+            document.getElementById('doctorAuthModal').style.display = 'flex';
+        }
+
+        function authenticateDoctor() {
+            const u = document.getElementById('docUser').value;
+            const p = document.getElementById('docPass').value;
+            if (u === 'doctor' && p === 'kshiti2026') {
+                sessionStorage.setItem('docAuth', 'true');
+                location.href = 'hub.html?openDash=true';
+            } else {
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const servicesSwiper = new Swiper('.services-swiper', {
+                slidesPerView: 1,
+                centeredSlides: true,
+                spaceBetween: 30,
+                loop: true,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 3,
+                    }
+                },
+                pagination: {
+                    el: '.services-swiper .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.services-swiper .swiper-button-next',
+                    prevEl: '.services-swiper .swiper-button-prev',
+                },
+            });
+
+            const articlesSwiper = new Swiper('.articles-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: false,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 3,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    }
+                },
+                pagination: {
+                    el: '.articles-swiper .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.articles-swiper .swiper-button-next',
+                    prevEl: '.articles-swiper .swiper-button-prev',
+                },
+            });
+
+            // Re-enable/disable swiper on resize for the articles one if needed
+            // But Swiper 10 handles breakpoints pretty well.
+            // If the user wants traditional grid on desktop, we can just use 3 slides per view.
         });
     </script>
 </body>
